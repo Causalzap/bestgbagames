@@ -2,6 +2,7 @@
 import { getGameBySlug } from '@/lib/gameData';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next'; // 添加 Metadata 导入
 import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 // 定义元数据（包含Canonical URL）
