@@ -1,4 +1,4 @@
-、// next-sitemap.config.js
+// next-sitemap.config.js
 module.exports = {
   siteUrl: 'https://www.bestgbagames.com',
   generateRobotsTxt: true,
