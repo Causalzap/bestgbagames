@@ -50,7 +50,7 @@ export default async function HiddenGemsPage() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-2">
-              What Makes a "Hidden Gem"?
+              What Makes a &quot;Hidden Gem&quot;?
             </h2>
             <p className="text-gray-400 max-w-3xl mx-auto">
               {hiddenGemsData.intro.definition.explanation}
@@ -88,7 +88,7 @@ export default async function HiddenGemsPage() {
                 <div className="ml-4">
                   <h3 className="text-2xl font-bold">{game.title}</h3>
                   <div className="text-sm text-gray-300">
-                    {game.release.year} • {game.release.developers.join(", ")}
+                    {game.release.year} &bull; {game.release.developers.join(", ")}
                   </div>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default async function HiddenGemsPage() {
                 <div className="md:col-span-2">
                   <div className="space-y-4">
                     <div className="bg-gray-900 rounded-lg p-4">
-                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Gameplay & Innovation</h4>
+                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Gameplay &amp; Innovation</h4>
                       <p className="mb-3">{game.uniqueMechanic}</p>
                       <p><strong>Genre:</strong> {game.genre}</p>
                     </div>
