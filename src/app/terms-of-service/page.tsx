@@ -1,4 +1,3 @@
-// src/app/terms-of-service/page.tsx
 import { constructMetadata } from '@/lib/utils';
 
 export const metadata = constructMetadata({
@@ -46,8 +45,8 @@ export default function TermsOfService() {
                 <span className="mr-2">1.</span> Acceptance of Terms
               </h2>
               <p>
-                By accessing the <span className="font-mono text-green-400 bg-black px-2 py-1 rounded">gbarchive.com</span> website 
-                (the "Site"), you agree to be bound by these Terms of Service, all applicable laws and regulations, 
+                By accessing the <span className="font-mono text-green-400 bg-black px-2 py-1 rounded">&quot;gbarchive.com&quot;</span> website 
+                (the &quot;Site&quot;), you agree to be bound by these Terms of Service, all applicable laws and regulations, 
                 and agree that you are responsible for compliance with any applicable local laws.
               </p>
             </div>
@@ -123,7 +122,7 @@ export default function TermsOfService() {
                 <span className="mr-2">4.</span> Disclaimer
               </h2>
               <p className="mb-4">
-                The materials on Game Boy Advance Archive's website are provided "as is". We make no warranties, 
+                The materials on Game Boy Advance Archive&apos;s website are provided &quot;as is&quot;. We make no warranties, 
                 expressed or implied, and hereby disclaim and negate all other warranties, including without limitation, 
                 implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement 
                 of intellectual property or other violation of rights.
@@ -157,71 +156,4 @@ export default function TermsOfService() {
                 </div>
                 
                 <div className="flex-1 bg-gray-800 p-4 rounded-lg">
-                  <div className="font-bold text-blue-300 flex items-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                    Technical Issues
-                  </div>
-                  <p className="text-sm text-gray-300">
-                    We are not liable for any errors or interruptions in the availability of the site.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-gray-900 p-5 rounded-lg border-l-4 border-orange-500 mb-8">
-              <h2 className="text-xl font-bold mb-4 text-orange-300">
-                <span className="mr-2">6.</span> Governing Law
-              </h2>
-              <div className="flex items-start">
-                <div className="bg-gray-800 w-16 h-16 flex items-center justify-center text-4xl rounded-lg mr-4 flex-shrink-0">
-                  <span>🌎</span>
-                </div>
-                <p>
-                  These Terms shall be governed by the laws of the United States without regard to conflict of law principles. 
-                  Any disputes relating to these terms will be subject to the exclusive jurisdiction of the courts of the United States.
-                </p>
-              </div>
-            </div>
-            
-            <div className="bg-gray-900 p-5 rounded-lg border-2 border-blue-600">
-              <h2 className="text-xl font-bold mb-4 text-blue-400">
-                <span className="mr-2">7.</span> Changes to Terms
-              </h2>
-              <div className="flex items-start">
-                <div className="bg-blue-900 w-16 h-16 flex items-center justify-center text-4xl rounded-lg mr-4 flex-shrink-0">
-                  <span>🔄</span>
-                </div>
-                <div>
-                  <p className="mb-3">
-                    Game Boy Advance Archive may revise these Terms of Service for its website at any time without notice. 
-                    By using this website you are agreeing to be bound by the then current version of these Terms of Service.
-                  </p>
-                  <p className="text-green-300">
-                    We encourage you to periodically review this page for the latest terms.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-10 text-center border-t border-gray-700 pt-6">
-            <p className="mb-3">
-              For any questions about these Terms, please contact us at: 
-              <a href="mailto:legal@gbarchive.com" className="ml-2 text-blue-400 hover:text-blue-300 underline">
-                legal@gbarchive.com
-              </a>
-            </p>
-            <div className="bg-gray-800 p-4 rounded-lg inline-block mt-4">
-              <p className="text-xs text-gray-400">
-                Game Boy Advance Archive is not affiliated with or endorsed by Nintendo. 
-                Game Boy Advance is a trademark of Nintendo. © {new Date().getFullYear()} Nintendo.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+                  <div className="font-bold text-blue-300
