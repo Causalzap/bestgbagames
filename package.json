@@ -25,6 +25,6 @@
   },
   "scripts": {
     "build": "next build",
-    "postbuild": "next-sitemap"  // 确保有这一行
+    "postbuild": "next-sitemap" 
   }
 }
