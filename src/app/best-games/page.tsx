@@ -2,14 +2,14 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { getAllGames, getGameCategories } from '@/lib/gameData';
 import { Game } from '@/types/game';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
-export default function BestGamesPage() {
+// 创建一个内部组件来处理 useSearchParams
+function BestGamesContent() {
   const searchParams = useSearchParams();
   const [games, setGames] = useState<Game[]>([]);
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
@@ -170,7 +170,7 @@ export default function BestGamesPage() {
               )}
               {searchQuery && (
                 <span className="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                  Search: &quot{searchQuery}&quot
+                  Search: &quot;{searchQuery}&quot;
                 </span>
               )}
             </div>
@@ -246,5 +246,20 @@ export default function BestGamesPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function BestGamesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading games...</p>
+        </div>
+      </div>
+    }>
+      <BestGamesContent />
+    </Suspense>
   );
 }
