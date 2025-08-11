@@ -171,15 +171,7 @@ export default async function HiddenGemsPage() {
             </ul>
           </div>
           
-          <div className="text-center bg-gradient-to-r from-purple-900/40 to-purple-600/30 py-8 px-6 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Share Your Picks</h3>
-            <p className="max-w-2xl mx-auto mb-6 text-gray-300">
-              Which hidden gem GBA games did we miss? Drop your own underrated games in the comments so we can keep these cult classics alive!
-            </p>
-            <button className="bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-              Join the Discussion
-            </button>
-          </div>
+          
         </div>
       </div>
     
