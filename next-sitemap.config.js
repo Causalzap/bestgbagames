@@ -2,7 +2,9 @@
 module.exports = {
   siteUrl: 'https://www.bestgbagames.com',
   generateRobotsTxt: true,
-  outDir: 'public',  // 可选，指定输出目录
+  changefreq: 'daily',  
+  priority: 0.7, 
+  sitemapSize: 5000 , 
   exclude: ['/secret', '/admin/*'],
   robotsTxtOptions: {
     policies: [
@@ -15,10 +17,6 @@ module.exports = {
         userAgent: 'Googlebot-Image',
         disallow: ['/images']
       }
-    ],
-    additionalSitemaps: [
-      'https://www.bestgbagames.com/sitemap.xml',
-      'https://www.bestgbagames.com/server-sitemap.xml'
     ]
   }
 };
