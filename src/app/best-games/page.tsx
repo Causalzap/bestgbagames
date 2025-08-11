@@ -170,7 +170,7 @@ export default function BestGamesPage() {
               )}
               {searchQuery && (
                 <span className="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                  Search: "{searchQuery}"
+                  Search: &quot{searchQuery}&quot
                 </span>
               )}
             </div>
