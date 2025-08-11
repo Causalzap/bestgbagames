@@ -1,5 +1,13 @@
 // src/components/content/RedditComment.tsx
-export default function RedditComment({ user, game, comment }) {
+import React from 'react';
+
+interface RedditCommentProps {
+  user: string;
+  game: string;
+  comment: string;
+}
+
+export default function RedditComment({ user, game, comment }: RedditCommentProps) {
   return (
     <div className="bg-gray-800 p-3 rounded border-l-4 border-yellow-500 mt-3">
       <div className="flex items-center mb-2">
