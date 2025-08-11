@@ -1,4 +1,3 @@
-// src/app/privacy-policy/page.tsx
 import { constructMetadata } from '@/lib/utils';
 
 export const metadata = constructMetadata({
