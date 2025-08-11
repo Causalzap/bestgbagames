@@ -27,7 +27,7 @@ export default function Footer() {
                 href="mailto:contact@gbarchive.com" 
                 className="text-yellow-400 hover:text-yellow-300 text-sm"
               >
-                contact@gbarchive.com
+                support@causalzap.com
               </a>
             </div>
           </div>
