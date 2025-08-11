@@ -19,6 +19,7 @@ export interface Game {
   historicalSignificance: string;
   whyStillWorthPlaying: string;
   youtubeVideoId?: string; 
+  lastUpdated?: Date; 
 }
 
 // 整个JSON文件结构
