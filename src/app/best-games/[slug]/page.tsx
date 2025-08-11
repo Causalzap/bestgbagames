@@ -1,4 +1,4 @@
-// src/app/games/[slug]/page.tsx
+// src/app/best-games/[slug]/page.tsx
 import { getGameBySlug } from '@/lib/gameData';
 import Image from 'next/image';
 import Link from 'next/link';
