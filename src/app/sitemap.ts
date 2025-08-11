@@ -9,19 +9,20 @@ export default async function sitemap() {
     {
       url: `${baseUrl}`,
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/best-games`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     ...games.map(game => ({
       url: `${baseUrl}/best-games/${game.slug}`,
-      lastModified: new Date(game.lastUpdated || Date.now()),
-      changeFrequency: 'monthly',
+      // 使用游戏数据中的最后更新时间（如果存在），否则使用当前时间
+      lastModified: game.lastUpdated ? new Date(game.lastUpdated) : new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     }))
   ];
