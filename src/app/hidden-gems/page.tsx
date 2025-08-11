@@ -135,7 +135,7 @@ export default async function HiddenGemsPage() {
                     </div>
                     
                     <div className="bg-purple-900/30 rounded-lg p-4 border border-purple-800">
-                      <p className="italic text-purple-200">"{game.quote}"</p>
+                      <p className="italic text-purple-200">&quot;{game.quote}&quot;</p>
                     </div>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default async function HiddenGemsPage() {
           </div>
           
           <div className="bg-gray-900 p-6 rounded-lg mb-8">
-            <h3 className="text-2xl font-bold mb-4">Collecting & Preservation Tips</h3>
+            <h3 className="text-2xl font-bold mb-4">Collecting &amp; Preservation Tips</h3>
             <ul className="space-y-3">
               {hiddenGemsData.conclusion.tips.items.map((tip, index) => (
                 <li key={index} className="flex items-start">
