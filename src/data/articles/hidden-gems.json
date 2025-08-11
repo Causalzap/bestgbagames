@@ -1,0 +1,261 @@
+{
+  "title": "Top 10 Hidden‑Gem GBA Games – A Collector’s Authority (2025)",
+  "slug": "hidden-gems",
+  "intro": {
+    "author": "Written by a retro‑game critic who has tracked hidden gem gba games and gba cult classics for 15 years",
+    "definition": {
+      "title": "What Makes a Game a \"Hidden Gem\"?",
+      "criteria": [
+        {
+          "name": "Low visibility",
+          "description": "global sales under 100,000 (VGChartz)"
+        },
+        {
+          "name": "Critical love",
+          "description": "Metacritic 80+ yet little mainstream buzz"
+        }
+      ],
+      "explanation": "These titles were crowded out by same‑week blockbusters, microscopic print runs, or zero Western marketing—yet they're among the most underrated gba games today."
+    }
+  },
+  "games": [
+    {
+      "id": 1,
+      "rank": 1,
+      "title": "Astro Boy: Omega Factor",
+      "slug": "astro-boy-omega-factor",
+      "release": {
+        "year": 2003,
+        "developers": ["Treasure", "Hitmaker"]
+      },
+      "genre": "Action",
+      "uniqueMechanic": "Story loops unlock new arcs",
+      "whyOverlooked": "Tiny ~50k print run",
+      "modernValue": "Still the best gba action hidden gem; fluid 60 fps sprites surpass many indies",
+      "collecting": {
+        "priceRange": "$80 – $150 (2025)",
+        "alternative": "Switch Online JP"
+      },
+      "quote": "A forgotten pixel opera of speed and soul.",
+      "playerReviews": [
+        {
+          "text": "The combat is so fluid and satisfying!",
+          "source": "Reddit/r/gba",
+          "username": "ActionGameFan"
+        },
+        {
+          "text": "Best hidden gem I've discovered in years",
+          "source": "Twitter",
+          "username": "@RetroCollector"
+        }
+      ],
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 2,
+      "title": "Ninja Five‑O (Ninja Cop)",
+      "slug": "ninja-five-o",
+      "release": {
+        "year": 2003,
+        "developers": ["Hudson", "Arc System Works"]
+      },
+      "genre": "Action",
+      "uniqueMechanic": "Grapple‑hook bullet‑time",
+      "whyOverlooked": "Limited U.S. shipment (< 25k)",
+      "modernValue": "Best gba ninja hidden gem for speed‑runs; harder than Metal Slug",
+      "collecting": {
+        "priceRange": "$320 – $700 (2025)"
+      },
+      "quote": "The $300 cartridge every purist still wants.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 3,
+      "title": "Drill Dozer",
+      "slug": "drill-dozer",
+      "release": {
+        "year": 2005,
+        "developers": ["Game Freak"]
+      },
+      "genre": "Action",
+      "uniqueMechanic": "Rumble‑pack gear drilling",
+      "whyOverlooked": "No TV advertising, late life‑cycle",
+      "modernValue": "Best gba platform hidden gem; tactile rumble ages beautifully",
+      "collecting": {
+        "priceRange": "$60 – $110 (2025)",
+        "alternative": "Wii U VC"
+      },
+      "quote": "Feel the cartridge come alive in your hands.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 4,
+      "title": "Tactics Ogre: The Knight of Lodis",
+      "slug": "tactics-ogre",
+      "release": {
+        "year": 2002,
+        "developers": ["Quest"]
+      },
+      "genre": "Role-playing (RPG)",
+      "uniqueMechanic": "Alignment‑driven endings",
+      "whyOverlooked": "Shadowed by FFTA launch",
+      "modernValue": "Best gba strategy hidden gem; deeper grid play than FFTA (Metacritic 86)",
+      "collecting": {
+        "priceRange": "$95 – $150 (2025)",
+        "alternative": "Analogue Pocket"
+      },
+      "quote": "A war epic trapped in a tiny cartridge.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 5,
+      "title": "Mega Man Zero 2",
+      "slug": "mega-man-zero-2",
+      "release": {
+        "year": 2003,
+        "developers": ["Inti Creates", "Capcom"]
+      },
+      "genre": "Action‑platformer (boss rush)",
+      "uniqueMechanic": "Form chips re‑tune stats",
+      "whyOverlooked": "Franchise fatigue, only ~45k sold",
+      "modernValue": "Best gba platform‑combat hidden gem; Metacritic 89, tougher than Contra",
+      "collecting": {
+        "priceRange": "$45 – $90 (2025)"
+      },
+      "quote": "Pixel‑perfect punishment that rewards mastery.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 6,
+      "title": "Boktai: The Sun Is in Your Hand",
+      "slug": "boktai",
+      "release": {
+        "year": 2003,
+        "developers": ["Kojima Prod.","Konami"]
+      },
+      "genre": "Solar‑sensor stealth‑action",
+      "uniqueMechanic": "Real UV powers gun",
+      "whyOverlooked": "Needs daylight; indoors reviewers panned battery life",
+      "modernValue": "Best gba stealth hidden gem; lamp‑hack keeps gimmick alive",
+      "collecting": {
+        "priceRange": "$70 – $120 (2025)"
+      },
+      "quote": "Play outside—the cartridge demands it.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 7,
+      "title": "Car Battler Joe",
+      "slug": "car-battler-joe",
+      "release": {
+        "year": 2002,
+        "developers": ["Ancient"]
+      },
+      "genre": "Action‑RPG vehicular combat",
+      "uniqueMechanic": "Loot‑built hot‑rod duels",
+      "whyOverlooked": "Retailers mis‑shelved it as racing game",
+      "modernValue": "Best gba rpg hidden gem; Diablo meets Twisted Metal with Yuzo Koshiro tunes",
+      "collecting": {
+        "priceRange": "$65 – $90 (2025)"
+      },
+      "quote": "Mad Max re‑imagined in 16‑bit chiptune.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 8,
+      "title": "Sigma Star Saga",
+      "slug": "sigma-star-saga",
+      "release": {
+        "year": 2005,
+        "developers": ["WayForward"]
+      },
+      "genre": "JRPG / side‑scroll shmup hybrid",
+      "uniqueMechanic": "Random‑seed shooter maps",
+      "whyOverlooked": "Review confusion over genre mash‑up",
+      "modernValue": "Best gba hybrid hidden gem; no other game plays like it",
+      "collecting": {
+        "priceRange": "$90 – $140 (2025)"
+      },
+      "quote": "Half RPG, half shooter, 100% curiosity.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 9,
+      "title": "Riviera: The Promised Land",
+      "slug": "riviera-the-promised-land",
+      "release": {
+        "year": 2004,
+        "developers": ["Sting"]
+      },
+      "genre": "Visual‑novel‑infused JRPG",
+      "uniqueMechanic": "Point‑limited room actions",
+      "whyOverlooked": "Anime box art scared big‑box buyers",
+      "modernValue": "Best gba jrpg hidden gem; branching romances outshine Golden Sun",
+      "collecting": {
+        "priceRange": "$35 – $55 (2025)",
+        "alternative": "PSP remaster"
+      },
+      "quote": "A painterly tale that lets you steer fate.",
+      "youtubeVideoId": ""
+    },
+    {
+      "rank": 10,
+      "title": "Shining Soul II",
+      "slug": "shining-soul-ii",
+      "release": {
+        "year": 2003,
+        "developers": ["Nextech"]
+      },
+      "genre": "Action‑RPG dungeon crawler",
+      "uniqueMechanic": "Eight classes, link‑co‑op",
+      "whyOverlooked": "Europe‑first rollout, U.S. shortage",
+      "modernValue": "Best gba co‑op hidden gem; couch‑loot fun for four, Diablo‑lite pace",
+      "collecting": {
+        "priceRange": "$55 – $80 (2025)"
+      },
+      "quote": "The Diablo‑lite nobody told you about.",
+      "youtubeVideoId": ""
+    }
+  ],
+  "conclusion": {
+    "title": "Why Hidden Gems Still Matter in 2025",
+    "benefits": [
+      {
+        "name": "Design Research",
+        "description": "Treasure’s sprite engineering, Quest’s tactical math, and WayForward’s genre fusion influence today’s indie devs."
+      },
+      {
+        "name": "Collector ROI",
+        "description": "Ninja Five‑O has jumped +230% since 2020; similar spikes loom for Car Battler Joe."
+      },
+      {
+        "name": "Fresh Gameplay",
+        "description": "Solar sensors, rumble carts, and genre hybrids feel more experimental than most mobile titles."
+      }
+    ],
+    "tips": {
+      "title": "Buying & Preservation Tips",
+      "items": [
+        "Check Save Batteries – Many GBA carts use CR1616 cells; replace for ~$3.",
+        "Hunt Japanese Auctions – Yen softness means cheaper boxed editions.",
+        "Dump Your ROMs – A GBxCart RW backs up saves for future generations."
+      ]
+    },
+    "callToAction": "Share Your Picks: Which hidden gem gba games did we miss? Drop your own underrated gba games in the comments so we can keep these gba cult classics alive!"
+  },
+  "seoKeywords": [
+    "hidden gem gba games",
+    "gba cult classics",
+    "underrated gba games",
+    "best gba action hidden gems",
+    "best gba ninja hidden gems",
+    "best gba platform hidden gems",
+    "best gba strategy hidden gems",
+    "best gba platform‑combat hidden gems",
+    "best gba stealth hidden gems",
+    "best gba rpg hidden gems",
+    "best gba hybrid hidden gems",
+    "best gba jrpg hidden gems",
+    "best gba co‑op hidden gems"
+  ]
+}
