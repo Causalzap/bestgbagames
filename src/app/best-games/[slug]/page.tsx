@@ -195,7 +195,7 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
           </button>
           
           <p className="mt-2 text-gray-600 text-sm">
-            Click "Play Online Now" to play directly in your browser
+            Click &quot;Play Online Now&quot; to play directly in your browser
           </p>
         </div>
       </div>
