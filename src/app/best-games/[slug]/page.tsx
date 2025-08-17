@@ -1,134 +1,204 @@
-// src/app/best-games/[slug]/page.tsx
+"use client";
+
 import { getGameBySlug } from '@/lib/gameData';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Metadata } from 'next'; // 添加 Metadata 导入
-import YouTubeEmbed from '@/components/YouTubeEmbed';
-
-// 定义元数据（包含Canonical URL）
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  // 根据环境设置基础URL
-  const baseUrl = 'https://www.bestgbagames.com';
-  
-  // 获取游戏信息
-  const game = getGameBySlug(params.slug);
-  
-  return {
-    title: game ? `${game.title} | Best GBA Games` : 'Game Not Found',
-    description: game?.coreHighlight || 'Discover the best Game Boy Advance games',
-    alternates: {
-      canonical: `${baseUrl}/best-games/${params.slug}`, // Canonical URL设置
-    }
-  };
-}
+import { useState } from 'react';
+import { getEmbedUrl } from '@/lib/gameService';
 
 export default function GameDetailPage({ params }: { params: { slug: string } }) {
   const game = getGameBySlug(params.slug);
+  const [showGameEmbed, setShowGameEmbed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   
+  // 处理游戏嵌入
+  const handlePlayClick = () => {
+    setShowGameEmbed(true);
+    setIsLoading(true);
+    
+    // 模拟加载延迟
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  };
+
   if (!game) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Game Not Found</h1>
-        <Link 
+        <a 
           href="/best-games" 
-          className="bg-purple-600 text-white px-6 py-3 rounded-lg"
+          className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-all"
         >
           Back to Best Games
-        </Link>
+        </a>
       </div>
     );
   }
   
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
+        {/* 返回按钮 - 简化设计 */}
         <div className="mb-6">
-          <Link 
+          <a 
             href="/best-games" 
-            className="text-purple-600 hover:text-purple-800 flex items-center"
+            className="text-purple-600 hover:text-purple-800 flex items-center text-sm"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
             </svg>
             Back to Best Games
-          </Link>
+          </a>
         </div>
         
-        {/* 游戏详情内容 */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        {/* 游戏信息区域 - 简化设计 */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
           <div className="md:flex">
-            <div className="md:w-1/3">
-              <div className="relative aspect-[3/4]">
+            {/* 封面区域 */}
+            <div className="md:w-1/3 p-4">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-md">
                 <Image 
                   src={`/images/covers/${game.slug}.jpg`}
                   alt={game.coverAlt}
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>
-            <div className="md:w-2/3 p-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{game.title}</h1>
-              
-              <div className="flex items-center mb-6">
-                <div className="flex items-center bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full mr-4">
-                  <span>#{game.rank}</span>
-                </div>
-                <span className="text-gray-500">{game.release.year}</span>
-              </div>
-              
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">Core Highlight</h2>
-                <p className="text-gray-600">{game.coreHighlight}</p>
-              </div>
-              
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">Historical Significance</h2>
-                <p className="text-gray-600">{game.historicalSignificance}</p>
-              </div>
-              
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">Why Still Worth Playing</h2>
-                <p className="text-gray-600">{game.whyStillWorthPlaying}</p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4 mb-6">
+            
+            {/* 游戏详情 */}
+            <div className="md:w-2/3 p-4 md:p-6">
+              <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Developer</h3>
-                  <p>{game.release.developers.join(', ')}</p>
+                  <div className="flex items-center">
+                    <div className="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-full mr-3">
+                      #{game.rank}
+                    </div>
+                    <span className="text-gray-500 text-sm">{game.release.year}</span>
+                  </div>
+                  
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">{game.title}</h1>
+                  
+                  <div className="mt-4">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {game.genre.map((g, idx) => (
+                        <span 
+                          key={idx} 
+                          className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full"
+                        >
+                          {g}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <p className="text-sm text-gray-600">
+                      <span className="font-semibold">Developer:</span> {game.release.developers.join(', ')}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Genre</h3>
-                  <p>{game.genre}</p>
+                
+                {/* 立即玩按钮 - 顶部放置 */}
+                <div className="md:hidden">
+                  <button
+                    onClick={handlePlayClick}
+                    disabled={showGameEmbed}
+                    className={`${
+                      showGameEmbed 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-purple-600 hover:bg-purple-700'
+                    } text-white text-xs font-medium py-2 px-4 rounded-lg`}
+                  >
+                    Play Now
+                  </button>
                 </div>
               </div>
               
-              <Link
-  href={{
-    pathname: "/online-play",
-    query: { game: game.slug }
-  }}
-  className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-center"
->
-  Play Online Now
-</Link>
+              {/* 游戏介绍 */}
+              <div className="mt-6 space-y-5">
+                <div>
+                  <h3 className="font-semibold text-gray-800 mb-2">Core Highlight</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{game.coreHighlight}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-gray-800 mb-2">Historical Significance</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{game.historicalSignificance}</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-gray-800 mb-2">Why Still Worth Playing</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{game.whyStillWorthPlaying}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-    {/* 添加YouTube视频部分 */}
-{game.youtubeVideoId && (
-  <YouTubeEmbed
-    videoId={game.youtubeVideoId}
-    title={`${game.title} Gameplay`}
-  />
-)}
-
-
+        
+        {/* 游戏内嵌区域 - 大幅优化 */}
+        {showGameEmbed && (
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-600 mb-8">
+            <div className="relative">
+              {/* 顶部控制栏 */}
+              <div className="bg-purple-700 p-3 flex justify-between items-center">
+                <span className="text-white font-medium">
+                  Playing {game.title}
+                </span>
+                <button
+                  onClick={() => setShowGameEmbed(false)}
+                  className="text-white hover:text-gray-200 text-sm"
+                >
+                  Close Game
+                </button>
+              </div>
+              
+              {/* 加载状态 */}
+              {isLoading && (
+                <div className="h-60 flex flex-col items-center justify-center">
+                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-purple-500"></div>
+                  <p className="mt-3 text-gray-700">Loading game, please wait...</p>
+                </div>
+              )}
+              
+              {/* 内嵌游戏 */}
+              <div className={`${isLoading ? 'hidden' : 'block'}`}>
+                <iframe
+                  src={getEmbedUrl(game.slug)}
+                  title={`Play ${game.title}`}
+                  className="w-full h-[400px]"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  sandbox="allow-same-origin allow-scripts"
+                ></iframe>
+              </div>
+              
+              {/* 底部法律信息 */}
+              <div className="bg-gray-100 p-3 text-center text-xs text-gray-600 border-t border-gray-200">
+                <p>Game provided by our partner service. Controls may vary per device.</p>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {/* 底部立即玩按钮 - 桌面端 */}
+        <div className="hidden md:block text-center mt-8">
+          <button
+            onClick={handlePlayClick}
+            disabled={showGameEmbed}
+            className={`${
+              showGameEmbed 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-purple-600 hover:bg-purple-700'
+            } text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all`}
+          >
+            {showGameEmbed ? 'Game is Loading...' : 'Play Online Now'}
+          </button>
+          
+          <p className="mt-2 text-gray-600 text-sm">
+            Click "Play Online Now" to play directly in your browser
+          </p>
+        </div>
       </div>
     </div>
-   
-   
-    
   );
-}   
+}

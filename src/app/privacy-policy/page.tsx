@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
               This Privacy Policy explains how 
               <span className="font-bold text-yellow-400"> Game Boy Advance Archive</span> (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;)
               collects, uses, and discloses your personal information when you use our website
-              <span className="font-mono text-green-400 bg-black px-2 py-1 rounded ml-1">gbarchive.com</span>
+              <span className="font-mono text-green-400 bg-black px-2 py-1 rounded ml-1">https://www.bestgbagames.com/</span>
               (the &quot;Site&quot;).
             </p>
             
@@ -167,8 +167,8 @@ export default function PrivacyPolicy() {
             <div className="mt-8 text-center">
               <p>
                 To exercise these rights, contact us at: 
-                <a href="mailto:privacy@gbarchive.com" className="ml-2 text-yellow-400 hover:text-yellow-300 underline">
-                  privacy@gbarchive.com
+                <a href="mailto:support@causalzap.com" className="ml-2 text-yellow-400 hover:text-yellow-300 underline">
+                support@causalzap.com
                 </a>
               </p>
             </div>

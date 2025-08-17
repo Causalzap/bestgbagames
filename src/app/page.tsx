@@ -3,32 +3,84 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  getFeaturedGames, 
-  getGameCategories,
-  getBestGamesData,
-  getAllGames
-} from '@/lib/gameData';
+import { getFeaturedGames, getGameCategories, getBestGamesData, getAllGames } from '@/lib/gameData';
 import { Game } from '@/types/game';
 import FAQSection from '@/components/FAQSection';
 import { gameFaqs } from '@/data/gameFaqs';
+import { getEmbedUrl } from '@/lib/gameService';
 
 export default function HomePage() {
   const [featuredGames, setFeaturedGames] = useState<Game[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [bestGamesData, setBestGamesData] = useState<any>(null);
-  
+  const [playingGame, setPlayingGame] = useState<{slug: string; title: string} | null>(null);
+  const [gameLoading, setGameLoading] = useState(false);
+
   useEffect(() => {
     setFeaturedGames(getFeaturedGames(3));
     setCategories(getGameCategories());
     setBestGamesData(getBestGamesData());
   }, []);
 
-  if (!bestGamesData) return <div>Loading...</div>;
+  // 处理Play Now点击 - 直接弹出游戏内嵌
+  const handlePlayNow = (slug: string, title: string) => {
+    setGameLoading(true);
+    setPlayingGame({slug, title});
+    setTimeout(() => setGameLoading(false), 800);
+  };
+
+  // 关闭游戏内嵌
+  const closeGameModal = () => {
+    setPlayingGame(null);
+  };
+
+  if (!bestGamesData) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+    </div>
+  );
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 英雄区域 - 更新按钮链接和样式 */}
+      {/* 游戏内嵌模态框 */}
+      {playingGame && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="w-full max-w-4xl rounded-xl overflow-hidden shadow-2xl">
+            <div className="flex justify-between items-center bg-purple-800 px-6 py-3">
+              <h3 className="font-bold text-white text-lg">
+                Playing {playingGame.title}
+              </h3>
+              <button
+                onClick={closeGameModal}
+                className="text-white hover:text-gray-200"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="relative aspect-video w-full bg-black">
+              {gameLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+                  <span className="ml-4 text-white">Loading game...</span>
+                </div>
+              ) : (
+                <iframe
+                  src={getEmbedUrl(playingGame.slug)}
+                  className="w-full h-full"
+                  sandbox="allow-same-origin allow-scripts"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 英雄区域 */}
       <div className="bg-gradient-to-b from-purple-900 to-indigo-800 text-white py-16 px-4">
         <div className="container mx-auto">
           <div className="max-w-3xl">
@@ -39,7 +91,7 @@ export default function HomePage() {
               {bestGamesData.intro.description}
             </p>
             <Link 
-              href="/best-games" // 指向精选游戏列表页
+              href="/best-games"
               className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-all shadow-md"
             >
               Explore All Games
@@ -48,7 +100,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 精选游戏展示区域 */}
+      {/* 精选游戏展示区域 - 与截图布局完全一致 */}
       <div className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -75,32 +127,41 @@ export default function HomePage() {
                         e.currentTarget.src = '/images/covers/default.png';
                       }}
                     />
+                    {/* 排名徽章 */}
+                    <div className="absolute top-3 right-3 bg-yellow-500 text-black font-bold text-lg w-10 h-10 flex items-center justify-center rounded-full">
+                      #{game.rank}
+                    </div>
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-bold text-gray-900">{game.title}</h3>
-                      <div className="flex items-center bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">
-                        <span>#{game.rank}</span>
-                      </div>
                     </div>
                     <div className="flex justify-between text-sm text-gray-500 mb-3">
                       <span>{game.release.year}</span>
-                      <span>{game.release.developers.join(', ')}</span>
+                      <span className="max-w-[60%] text-right">
+                        {game.release.developers.join(', ')}
+                      </span>
                     </div>
-                    <p className="text-gray-600 mb-4">{game.coreHighlight}</p>
-                    <div className="flex space-x-4">
+                    <p className="text-gray-600 mb-4 text-sm">{game.coreHighlight}</p>
+                    <div className="flex space-x-4 border-t border-gray-100 pt-4">
                       <Link 
-                        href={`/games/${game.slug}`} 
-                        className="text-purple-700 font-medium hover:text-purple-900 transition-colors"
+                        href={`/best-games/${game.slug}`} 
+                        className="text-purple-700 font-medium hover:text-purple-900 transition-colors flex items-center"
                       >
                         View Details
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </Link>
-                      <Link 
-                        href="/online-play" 
-                        className="text-purple-700 font-medium hover:text-purple-900 transition-colors"
+                      <button 
+                        onClick={() => handlePlayNow(game.slug, game.title)}
+                        className="text-green-600 font-medium hover:text-green-800 transition-colors flex items-center"
                       >
                         Play Now
-                      </Link>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" view极="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -171,7 +232,6 @@ export default function HomePage() {
             ))}
           </div>
           
-          {/* 更新按钮样式 - 应用渐变底纹 */}
           <div className="text-center mt-10">
             <Link 
               href="/best-games"
@@ -202,7 +262,7 @@ export default function HomePage() {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link 
                 href="/online-play?device=pc" 
-                className="bg-blue-600 hover:bg-blue-700 p-6 rounded-lg flex flex-col items-center text-center"
+                className="bg-blue-600 hover:bg-blue-700 p-6 rounded-lg flex flex-col items-center text-center transition-all hover:-translate-y-1"
               >
                 <div className="text-3xl mb-4">💻</div>
                 <h3 className="font-bold text-lg mb-2">PC Experience</h3>
@@ -211,7 +271,7 @@ export default function HomePage() {
               
               <Link 
                 href="/online-play?device=mobile" 
-                className="bg-green-600 hover:bg-green-700 p-6 rounded-lg flex flex-col items-center text-center"
+                className="bg-green-600 hover:bg-green-700 p-6 rounded-lg flex flex-col items-center text-center transition-all hover:-translate-y-1"
               >
                 <div className="text-3xl mb-4">📱</div>
                 <h3 className="font-bold text-lg mb-2">Mobile Experience</h3>
@@ -220,7 +280,7 @@ export default function HomePage() {
               
               <Link 
                 href="/hidden-gems" 
-                className="bg-yellow-600 hover:bg-yellow-700 p-6 rounded-lg flex flex-col items-center text-center"
+                className="bg-yellow-600 hover:bg-yellow-700 p-6 rounded-lg flex flex-col items-center text-center transition-all hover:-translate-y-1"
               >
                 <div className="text-3xl mb-4">💎</div>
                 <h3 className="font-bold text-lg mb-2">Hidden Gems</h3>

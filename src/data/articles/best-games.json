@@ -8,18 +8,19 @@
   "games": [
     {
       "rank": 1,
-      "title": "The Legend of Zelda: A Link to the Past & Four Swords",
-      "slug": "zelda-link-to-the-past-four-swords",
-      "coverAlt": "Link wielding the Master Sword in colorful overhead Zelda style",
+      "title": "Fire Emblem",
+      "slug": "fire-emblem",
+      "coverAlt": "Fantasy warriors locked in grid‑based tactical combat",
       "release": {
-        "year": 2002,
-        "developers": ["Nintendo"]
+        "year": 2004,
+        "developers": ["Intelligent Systems"]
       },
-      "genre": ["Action"],
-      "coreHighlight": "Faithful SNES port with added cooperative Four Swords multiplayer",
-      "historicalSignificance": "Often cited as the highest-rated GBA game, a portable masterpiece :contentReference[oaicite:1]{index=1}",
-      "whyStillWorthPlaying": "Timeless puzzles, exploration, and replay value",
+      "genre": ["Role‑playing (RPG)","Strategy / Tactics"],
+      "coreHighlight": "Permadeath mechanics, class growth and strategic storytelling",
+      "historicalSignificance": "Introduced the series to Western audiences :contentReference[oaicite:8]{index=8}",
+      "whyStillWorthPlaying": "Emotional stakes and strategic engagement last forever",
       "youtubeVideoId": ""
+      
     },
     {
       "rank": 2,
@@ -113,17 +114,17 @@
     },
     {
       "rank": 8,
-      "title": "Fire Emblem",
-      "slug": "fire-emblem",
-      "coverAlt": "Fantasy warriors locked in grid‑based tactical combat",
+      "title": "The Legend of Zelda: A Link to the Past & Four Swords",
+      "slug": "zelda-link-to-the-past-four-swords",
+      "coverAlt": "Link wielding the Master Sword in colorful overhead Zelda style",
       "release": {
-        "year": 2004,
-        "developers": ["Intelligent Systems"]
+        "year": 2002,
+        "developers": ["Nintendo"]
       },
-      "genre": ["Role‑playing (RPG)","Strategy / tactics"],
-      "coreHighlight": "Permadeath mechanics, class growth and strategic storytelling",
-      "historicalSignificance": "Introduced the series to Western audiences :contentReference[oaicite:8]{index=8}",
-      "whyStillWorthPlaying": "Emotional stakes and strategic engagement last forever",
+      "genre": ["Action"],
+      "coreHighlight": "Faithful SNES port with added cooperative Four Swords multiplayer",
+      "historicalSignificance": "Often cited as the highest-rated GBA game, a portable masterpiece :contentReference[oaicite:1]{index=1}",
+      "whyStillWorthPlaying": "Timeless puzzles, exploration, and replay value",
       "youtubeVideoId": ""
     },
     {
@@ -195,7 +196,7 @@
         "year": 2001,
         "developers": ["Nintendo R&D1"]
       },
-      "genre": ["Wario Land 4"],
+      "genre": ["Action"],
       "coreHighlight": "Innovative level design with multiple routes and powerups",
       "historicalSignificance": "Highlighted Wario’s unique style on GBA hardware :contentReference[oaicite:12]{index=12}",
       "whyStillWorthPlaying": "Perfect balance of challenge and charm",
@@ -285,7 +286,7 @@
         "year": 2004,
         "developers": ["Intelligent Systems"]
       },
-      "genre": ["Role‑playing (RPG)","Strategy / tactics"],
+      "genre": ["Role‑playing (RPG)","Strategy / Tactics"],
       "coreHighlight": "Branching map paths and dual‑storyline structure",
       "historicalSignificance": "Follow‑up that refined combat and narrative depth :contentReference[oaicite:17]{index=17}",
       "whyStillWorthPlaying": "More engaging campaign and character arcs",
@@ -345,7 +346,7 @@
         "year": 2001,
         "developers": ["Dimps","Sonic Team"]
       },
-      "genre": ["Platformer","Action"],
+      "genre": ["Action"],
       "coreHighlight": "High‑speed platforming with responsive physics and special stages",
       "historicalSignificance": "Successfully translated console Sonic feel to handheld :contentReference[oaicite:21]{index=21}",
       "whyStillWorthPlaying": "Classic speed and stage variety still shine",
@@ -375,7 +376,7 @@
         "year": 2004,
         "developers": ["Intelligent Systems"]
       },
-      "genre": ["Role‑playing (RPG)","Strategy / tactics"],
+      "genre": ["Role‑playing (RPG)","Strategy / Tactics"],
       "coreHighlight": "Unique branching paths and deeper tactical systems",
       "historicalSignificance": "Fourth major Fire Emblem on handheld with strong legacy :contentReference[oaicite:23]{index=23}",
       "whyStillWorthPlaying": "Perfect balance of challenge and story",

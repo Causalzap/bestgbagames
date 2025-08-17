@@ -25,3 +25,10 @@ a {
   box-shadow: none !important;
   border-color: transparent !important;
 }
+
+/* 适配不同设备 */
+@media (max-width: 768px) {
+  .game-container {
+    padding-top: 100% !important;
+  }
+}

@@ -46,7 +46,7 @@ export default function TermsOfService() {
                 <span className="mr-2">1.</span> Acceptance of Terms
               </h2>
               <p>
-                By accessing the <span className="font-mono text-green-400 bg-black px-2 py-1 rounded">gbarchive.com</span> website 
+                By accessing the <span className="font-mono text-green-400 bg-black px-2 py-1 rounded">support@causalzap.com</span> website 
                 (the &quot;Site&quot;), you agree to be bound by these Terms of Service, all applicable laws and regulations, 
                 and agree that you are responsible for compliance with any applicable local laws.
               </p>
@@ -209,8 +209,8 @@ export default function TermsOfService() {
           <div className="mt-10 text-center border-t border-gray-700 pt-6">
             <p className="mb-3">
               For any questions about these Terms, please contact us at: 
-              <a href="mailto:legal@gbarchive.com" className="ml-2 text-blue-400 hover:text-blue-300 underline">
-                legal@gbarchive.com
+              <a href="mailto:support@causalzap.com" className="ml-2 text-blue-400 hover:text-blue-300 underline">
+              support@causalzap.com
               </a>
             </p>
             <div className="bg-gray-800 p-4 rounded-lg inline-block mt-4">
