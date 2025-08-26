@@ -55,3 +55,30 @@ export interface BestGamesData {
   };
   seoKeywords: string[];
 }
+
+// ========== Hidden Gems 专用类型 ==========
+export interface HiddenGemCollectingInfo {
+  priceRange?: string;
+  alternative?: string;
+}
+
+// 在通用 Game 基础上扩展本页需要的字段
+export interface HiddenGemGame extends Game {
+  uniqueMechanic?: string;
+  whyOverlooked?: string;
+  modernValue?: string;
+  quote?: string;
+  collecting?: HiddenGemCollectingInfo;
+}
+
+// Hidden Gems 页面所需的数据结构
+export interface HiddenGemsData {
+  title: string;
+  intro: { definition: { explanation: string } };
+  games: HiddenGemGame[];
+  conclusion: {
+    title: string;
+    benefits: { name: string; description: string }[];
+    tips: { items: string[] };
+  };
+}

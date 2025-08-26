@@ -11,8 +11,10 @@
       "title": "Fire Emblem",
       "slug": "fire-emblem",
       "coverAlt": "Fantasy warriors locked in grid‑based tactical combat",
-      "year": 2004,
-      "developers": "Intelligent Systems",
+      "release": {
+        "year": 2004,
+        "developers": ["Intelligent Systems"]
+      },
       "genre": ["Role‑playing (RPG)","Strategy / Tactics"],
       "coreHighlight": "Permadeath mechanics, class growth and strategic storytelling",
       "historicalSignificance": "Introduced the series to Western audiences :contentReference[oaicite:8]{index=8}",

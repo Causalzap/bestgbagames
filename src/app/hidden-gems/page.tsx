@@ -1,9 +1,14 @@
+// src/app/hidden-gems/page.tsx
+
 import { getHiddenGemsData } from '@/lib/gameData';
-import Link from 'next/link';
 import Image from 'next/image';
 
-// 创建Hidden Gem标准卡片组件
-const HiddenGemCriterionCard = ({ icon, title, description }: { icon: string, title: string, description: string }) => (
+// 创建 Hidden Gem 标准卡片组件（保持你的样式与结构）
+const HiddenGemCriterionCard = ({
+  icon,
+  title,
+  description,
+}: { icon: string; title: string; description: string }) => (
   <div className="bg-gray-800 rounded-lg p-5 border border-purple-600/20 hover:border-purple-500 transition-all flex flex-col">
     <div className="mb-4">
       <div className="bg-purple-900 w-14 h-14 rounded-full flex items-center justify-center">
@@ -30,22 +35,18 @@ const HiddenGemCriterionCard = ({ icon, title, description }: { icon: string, ti
 
 export default async function HiddenGemsPage() {
   const hiddenGemsData = getHiddenGemsData();
-  
+
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      
-      {/* 主内容区 */}
       <div className="container mx-auto px-4 py-12">
         {/* 页面标题 */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white mb-4">
-            TOP 10 GBA HIDDEN GEMS
-          </h1>
+          <h1 className="text-4xl font-bold text-white mb-4">TOP 10 GBA HIDDEN GEMS</h1>
           <p className="text-lg text-purple-300 max-w-2xl mx-auto">
             Forgotten treasures from the handheld gaming golden age
           </p>
         </div>
-        
+
         {/* 隐藏宝石标准部分 */}
         <div className="mb-20">
           <div className="text-center mb-12">
@@ -56,100 +57,117 @@ export default async function HiddenGemsPage() {
               {hiddenGemsData.intro.definition.explanation}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <HiddenGemCriterionCard 
+            <HiddenGemCriterionCard
               icon="visibility"
               title="Low Visibility"
               description="Global sales under 100,000 units (VGChartz)"
             />
-            <HiddenGemCriterionCard 
+            <HiddenGemCriterionCard
               icon="critical"
               title="Critical Love"
               description="Metacritic 80+ yet little mainstream buzz"
             />
-            <HiddenGemCriterionCard 
+            <HiddenGemCriterionCard
               icon="innovation"
               title="Unique Innovation"
               description="Gameplay mechanics ahead of their time"
             />
           </div>
         </div>
-        
+
         {/* 游戏列表 */}
         <div className="space-y-16">
-          {hiddenGemsData.games.map((game) => (
-            <div key={game.rank} className="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
-              {/* 游戏排名横幅 */}
-              <div className="bg-gradient-to-r from-purple-900 to-indigo-900 py-4 px-6 flex items-center">
-                <div className="bg-yellow-500 text-black font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center">
-                  {game.rank}
+          {hiddenGemsData.games.map((game) => {
+            // 年份与开发者兜底（优先规范后的 year 与 developer）
+            const yearDisplay =
+              typeof game.year === 'number' && game.year > 0
+                ? game.year
+                : (game.release?.year ?? 'Year unknown');
+
+            const devsArray = game.release?.developers ?? [];
+            const developersDisplay =
+              (Array.isArray(devsArray) && devsArray.length > 0)
+                ? devsArray.join(', ')
+                : (game.developer || 'Unknown Developer');
+
+            // genre 兼容显示（尽管我们已标准化为 string[]，这里更稳妥）
+            const genreDisplay = Array.isArray(game.genre) ? game.genre.join(', ') : game.genre;
+
+            return (
+              <div key={game.rank} className="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                {/* 游戏排名横幅 */}
+                <div className="bg-gradient-to-r from-purple-900 to-indigo-900 py-4 px-6 flex items-center">
+                  <div className="bg-yellow-500 text-black font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center">
+                    {game.rank}
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-2xl font-bold">{game.title}</h3>
+                    <div className="text-sm text-gray-300">
+                      {yearDisplay} &bull; {developersDisplay}
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-2xl font-bold">{game.title}</h3>
-                  <div className="text-sm text-gray-300">
-                    {game.release?.year} &bull; {game.release?.developers?.join(", ")}
+
+                {/* 游戏内容 */}
+                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="bg-gray-700 rounded-lg aspect-[3/4] flex items-center justify-center overflow-hidden">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={`/images/covers/${game.slug}.jpg`}
+                          alt={`${game.title} cover art`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <div className="space-y-4">
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h4 className="text-lg font-semibold text-purple-300 mb-2">Gameplay &amp; Innovation</h4>
+                        <p className="mb-3">{game.uniqueMechanic}</p>
+                        <p><strong>Genre:</strong> {genreDisplay}</p>
+                      </div>
+
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h4 className="text-lg font-semibold text-purple-300 mb-2">Why It Was Overlooked</h4>
+                        <p>{game.whyOverlooked}</p>
+                      </div>
+
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h4 className="text-lg font-semibold text-purple-300 mb-2">Modern Value</h4>
+                        <p>{game.modernValue}</p>
+                      </div>
+
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h4 className="text-lg font-semibold text-purple-300 mb-2">Collecting Information</h4>
+                        <p><strong>Price Range (2025):</strong> {game.collecting?.priceRange}</p>
+                        {game.collecting?.alternative && (
+                          <p><strong>Alternative:</strong> {game.collecting?.alternative}</p>
+                        )}
+                      </div>
+
+                      <div className="bg-purple-900/30 rounded-lg p-4 border border-purple-800">
+                        <p className="italic text-purple-200">&quot;{game.quote}&quot;</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              
-              {/* 游戏内容 */}
-              <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-1">
-                  <div className="bg-gray-700 rounded-lg aspect-[3/4] flex items-center justify-center overflow-hidden">
-                    <div className="relative w-full h-full">
-                      <Image 
-                        src={`/images/covers/${game.slug}.jpg`}                        
-                        alt={`${game.title} cover art`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="md:col-span-2">
-                  <div className="space-y-4">
-                    <div className="bg-gray-900 rounded-lg p-4">
-                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Gameplay &amp; Innovation</h4>
-                      <p className="mb-3">{game.uniqueMechanic}</p>
-                      <p><strong>Genre:</strong> {game.genre}</p>
-                    </div>
-                    
-                    <div className="bg-gray-900 rounded-lg p-4">
-                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Why It Was Overlooked</h4>
-                      <p>{game.whyOverlooked}</p>
-                    </div>
-                    
-                    <div className="bg-gray-900 rounded-lg p-4">
-                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Modern Value</h4>
-                      <p>{game.modernValue}</p>
-                    </div>
-                    
-                    <div className="bg-gray-900 rounded-lg p-4">
-                      <h4 className="text-lg font-semibold text-purple-300 mb-2">Collecting Information</h4>
-                      <p><strong>Price Range (2025):</strong> {game.collecting?.priceRange}</p>
-                      {game.collecting?.alternative && (
-                        <p><strong>Alternative:</strong> {game.collecting?.alternative}</p>
-                      )}
-                    </div>
-                    
-                    <div className="bg-purple-900/30 rounded-lg p-4 border border-purple-800">
-                      <p className="italic text-purple-200">&quot;{game.quote}&quot;</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-        
+
         {/* 结论部分 */}
         <div className="mt-20 bg-gray-800 rounded-xl p-8 border border-purple-700/30">
           <h2 className="text-3xl font-bold text-center mb-10">
             {hiddenGemsData.conclusion.title}
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {hiddenGemsData.conclusion.benefits.map((benefit, index) => (
               <div key={index} className="bg-gray-700/40 p-6 rounded-lg">
@@ -158,7 +176,7 @@ export default async function HiddenGemsPage() {
               </div>
             ))}
           </div>
-          
+
           <div className="bg-gray-900 p-6 rounded-lg mb-8">
             <h3 className="text-2xl font-bold mb-4">Collecting &amp; Preservation Tips</h3>
             <ul className="space-y-3">
@@ -170,11 +188,8 @@ export default async function HiddenGemsPage() {
               ))}
             </ul>
           </div>
-          
-          
         </div>
       </div>
-    
     </div>
   );
 }

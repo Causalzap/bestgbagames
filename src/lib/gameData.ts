@@ -2,7 +2,7 @@
 import bestGamesData from '@/data/articles/best-games.json';
 import hiddenGemsData from '@/data/articles/hidden-gems.json';
 import rpgTopGames from '@/data/articles/rpg-top-games.json';
-import { Game, BestGamesData } from '@/types/game';
+import { Game, BestGamesData, HiddenGemsData, HiddenGemGame } from '@/types/game';
 
 /* -------------------------
  * 辅助函数
@@ -183,16 +183,56 @@ export function getBestGamesData(): BestGamesData {
 /**
  * Hidden Gems：字段对齐到 Game（developer 单数、genre 标准化、year 统一）
  */
-export function getHiddenGemsData() {
-  const src: any[] = (hiddenGemsData as any)?.games ?? [];
+export function getHiddenGemsData(): HiddenGemsData {
+  const base: any = hiddenGemsData ?? {};
+
+  // 兜底对象，避免 JSON 缺字段时报类型错
+  const fallback: HiddenGemsData = {
+    title: 'GBA Hidden Gems',
+    intro: { definition: { explanation: '' } },
+    games: [],
+    conclusion: {
+      title: 'Why these hidden gems matter',
+      benefits: [],
+      tips: { items: [] },
+    },
+  };
+
+  const gamesSrc: any[] = Array.isArray(base.games) ? base.games : [];
+
+  const games: HiddenGemGame[] = gamesSrc.map((g: any): HiddenGemGame => ({
+    // 先继承原字段（允许 JSON 里自带的扩展字段保留）
+    ...g,
+
+    // 统一/补齐关键字段
+    slug: g.slug ?? '',
+    title: g.title ?? 'Unknown Title',
+    rank: typeof g.rank === 'number' ? g.rank : 0,
+
+    // 继承 Game 的常用字段（若 JSON 无则补默认）
+    coreHighlight: g.coreHighlight ?? '',
+    historicalSignificance: g.historicalSignificance ?? '',
+    whyStillWorthPlaying: g.whyStillWorthPlaying ?? '',
+    coverAlt: g.coverAlt ?? `${g.title ?? 'Unknown'} cover art`,
+
+    // 标准化
+    genre: normalizeGenre(g.genre),
+    developer: pickDeveloper(g),
+    year: pickYear(g),
+
+    // HiddenGem 扩展字段本身都是可选的，直接沿用（如需兜底可在此补默认）
+    uniqueMechanic: g.uniqueMechanic,
+    whyOverlooked: g.whyOverlooked,
+    modernValue: g.modernValue,
+    quote: g.quote,
+    collecting: g.collecting,
+  }));
+
   return {
-    ...(hiddenGemsData as any),
-    games: src.map((g) => ({
-      ...g,
-      genre: normalizeGenre(g.genre),
-      developer: pickDeveloper(g),
-      year: pickYear(g),
-    })),
+    title: base.title ?? fallback.title,
+    intro: base.intro ?? fallback.intro,
+    games,
+    conclusion: base.conclusion ?? fallback.conclusion,
   };
 }
 
