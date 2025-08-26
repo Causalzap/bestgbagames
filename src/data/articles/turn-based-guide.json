@@ -1,0 +1,142 @@
+{
+    "title": "The Ultimate Guide to Turn-Based RPGs",
+    "slug": "turn-based-rpgs",
+    "description": "Master the art of strategic combat in Game Boy Advance's best turn-based RPGs",
+    "sections": [
+      {
+        "title": "What are Turn-Based RPGs?",
+        "content": "Turn-based RPGs are a subgenre of role-playing games where players and enemies take turns making moves. This style of gameplay allows for strategic thinking and careful planning of each action.",
+        "image": "/images/guides/turn-based-combat.jpg",
+        "caption": "Classic turn-based combat interface"
+      },
+      {
+        "title": "Core Mechanics",
+        "content": "Key mechanics in turn-based RPGs include:",
+        "items": [
+          "Battle systems with initiative order",
+          "Character stats (HP, MP, ATK, DEF, etc.)",
+          "Elemental weaknesses/resistances",
+          "Skill trees and progression systems",
+          "Party management and formation"
+        ]
+      },
+      {
+        "title": "Historical Evolution",
+        "content": "Turn-based RPGs have evolved significantly on the GBA:",
+        "timeline": [
+          {
+            "year": 2001,
+            "event": "Golden Sun introduces innovative elemental combat",
+            "game": "Golden Sun"
+          },
+          {
+            "year": 2003,
+            "event": "Final Fantasy Tactics Advance refines tactical combat",
+            "game": "Final Fantasy Tactics Advance"
+          },
+          {
+            "year": 2004,
+            "event": "Pokémon games popularize accessible turn-based mechanics",
+            "game": "Pokémon FireRed/LeafGreen"
+          }
+        ]
+      },
+      {
+        "title": "Top 5 Turn-Based RPGs on GBA",
+        "games": [
+          {
+            "title": "Golden Sun",
+            "slug": "golden-sun",
+            "reason": "Innovative Djinni system and elemental combat"
+          },
+          {
+            "title": "Final Fantasy VI Advance",
+            "slug": "final-fantasy-vi-advance",
+            "reason": "Classic ATB system with deep character customization"
+          },
+          {
+            "title": "Pokémon FireRed/LeafGreen",
+            "slug": "pokemon-firered-leafgreen",
+            "reason": "Accessible yet deep monster-battling system"
+          },
+          {
+            "title": "Breath of Fire II",
+            "slug": "breath-of-fire-ii",
+            "reason": "Traditional JRPG mechanics with dragon transformations"
+          },
+          {
+            "title": "Mario & Luigi: Superstar Saga",
+            "slug": "mario-luigi-superstar-saga",
+            "reason": "Action-command system adds timing-based mechanics"
+          }
+        ]
+      },
+      {
+        "title": "Advanced Strategies",
+        "content": "Master these techniques to dominate turn-based RPGs:",
+        "strategies": [
+          {
+            "name": "Elemental Chaining",
+            "description": "Combine elemental attacks for bonus damage"
+          },
+          {
+            "name": "Buff Stacking",
+            "description": "Layer multiple stat boosts for maximum effect"
+          },
+          {
+            "name": "Turn Manipulation",
+            "description": "Use skills to alter turn order advantageously"
+          }
+        ]
+      },
+      {
+        "title": "Beginner Tips",
+        "content": "New to turn-based RPGs? Start with these fundamentals:",
+        "tips": [
+          "Always carry healing items",
+          "Exploit enemy weaknesses",
+          "Balance your party roles",
+          "Save before challenging bosses",
+          "Grind levels in safe areas"
+        ]
+      },
+      {
+        "title": "Community Favorites",
+        "content": "What players love about turn-based RPGs:",
+        "quotes": [
+          {
+            "text": "The strategic depth keeps me coming back to these games year after year",
+            "author": "JRPG Fanatic"
+          },
+          {
+            "text": "Golden Sun's puzzle-dungeon combos are still unmatched",
+            "author": "RetroGamer87"
+          }
+        ]
+      }
+    ],
+    "recommendedGames": [
+      "golden-sun",
+      "final-fantasy-vi-advance",
+      "pokemon-firered-leafgreen",
+      "breath-of-fire-ii",
+      "mario-luigi-superstar-saga"
+    ],
+    "seoKeywords": [
+      "turn-based rpg guide",
+      "gba strategy games",
+      "best turn-based games",
+      "jrpg combat tips",
+      "golden sun strategies"
+    ],
+    "relatedGuides": [
+      {
+        "title": "Advanced Combat Mechanics",
+        "path": "/guides/advanced-combat"
+      },
+      {
+        "title": "Character Progression Systems",
+        "path": "/guides/progression-systems"
+      }
+    ]
+  }

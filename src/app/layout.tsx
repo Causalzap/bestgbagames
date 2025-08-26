@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'BestGbaGames.com | Ultimate Game Boy Advance Archive',
-  description: 'BestGbaGames.com offers the top GBA games, hidden gems, and online play guides – your #1 retro gaming destination.',
+  description: 'BestGbaGames.com offers the top GBA games, hidden gems, rpg hub and online play guides – your #1 retro gaming destination.',
   metadataBase: new URL("https://www.bestgbagames.com"),
   alternates: {
     canonical: "https://www.bestgbagames.com/"
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ['best GBA games', 'Game Boy Advance archive', 'GBA online play', 'retro gaming'],
   openGraph: {
     title: 'BestGbaGames.com | Ultimate Game Boy Advance Archive',
-    description: 'Discover the best GBA classics, hidden gems, and online play tips at BestGbaGames.com.',
+    description: 'Discover the best GBA classics, hidden gems, rpg hub and online play tips at BestGbaGames.com.',
     url: 'https://www.bestgbagames.com',
     siteName: 'BestGbaGames.com',
     images: [{

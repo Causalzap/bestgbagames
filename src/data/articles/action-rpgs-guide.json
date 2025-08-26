@@ -1,0 +1,31 @@
+{
+    "title": "Action RPG Mastery Guide",
+    "slug": "action-rpgs",
+    "description": "Dominate real-time combat in GBA's most intense action RPGs",
+    "sections": [
+      {
+        "title": "Real-Time Combat Essentials",
+        "content": "Action RPGs blend traditional RPG elements with fast-paced combat..."
+      },
+      {
+        "title": "Top Action RPGs on GBA",
+        "games": [
+          {
+            "title": "Castlevania: Aria of Sorrow",
+            "slug": "castlevania-aria-of-sorrow",
+            "reason": "Fluid combat with soul-collection system"
+          },
+          {
+            "title": "The Legend of Zelda: Minish Cap",
+            "slug": "zelda-minish-cap",
+            "reason": "Precise swordplay and item-based combat"
+          }
+        ]
+      }
+    ],
+    "recommendedGames": [
+      "castlevania-aria-of-sorrow",
+      "zelda-minish-cap",
+      "kingdom-hearts-chain-of-memories"
+    ]
+  }

@@ -1,0 +1,731 @@
+[
+    {
+      "id": 1,
+      "rank": 1,
+      "title": "Golden Sun",
+      "release":{
+        "developers": ["Camelot Software Planning"]
+      },
+      "year": 2001,
+      "description": "A groundbreaking JRPG with innovative elemental combat system and deep magic mechanics.",
+      "slug": "golden-sun",
+      "metacritic": 89,
+      "ign": 9.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["jrpg", "classic", "magic-system"],
+      "platforms": ["Game Boy Advance", "Wii U Virtual Console"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2001-08-01",
+      "pros": [
+        "Innovative Djinni elemental system",
+        "Deep character customization",
+        "Puzzle-filled dungeons"
+      ],
+      "cons": [
+        "Slow pacing in early game",
+        "Limited inventory space"
+      ],
+      "gameDetailUrl":"/games/golden-sun",
+      "coreHighlight": "Elemental Djinni system combining magic, summons, and puzzles.",
+      "historicalSignificance": "Regarded as the flagship GBA JRPG that showcased the handheld’s graphical and narrative potential.",
+      "whyStillWorthPlaying": "Its puzzles, elemental system, and atmospheric world still feel fresh compared to modern handheld RPGs.",
+      "series": ""
+ 
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "title": "Golden Sun: The Lost Age",
+      "release": {
+      "developers": ["Camelot Software Planning"]
+      },
+      "year": 2002,
+      "description": "The direct sequel to Golden Sun, expanding the universe and featuring new characters and powers.",
+      "slug": "golden-sun-the-lost-age",
+      "metacritic": 87,
+      "ign": 9.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["jrpg", "classic", "magic-system", "sequel"],
+      "platforms": ["Game Boy Advance", "Wii U Virtual Console"],
+      "hasMultiplayer": false,
+      "storyLength": 35,
+      "releaseDate": "2002-08-01",
+      "pros": [
+        "Expansive world and story",
+        "Tactical combat system",
+        "Character switching"
+      ],
+      "cons": [
+        "Some repetitive dungeon design",
+        "Pacing issues in certain parts"
+      ],
+      "gameDetailUrl": "/games/golden-sun-the-lost-age",
+      "coreHighlight": "Expanded elemental Djinni mechanics with larger world exploration.",
+      "historicalSignificance": "One of the few true narrative sequels on GBA, pushing save-transfer continuity.",
+      "whyStillWorthPlaying": "A direct continuation with more depth and mature tone, making it a must for JRPG fans."
+      ,"series": ""
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "title": "Final Fantasy Tactics Advance",
+      "release": {
+      "developers": ["Square Enix"]
+    },
+      "year": 2003,
+      "description": "A tactical RPG with deep strategy and an expansive job system, set in the world of Ivalice.",
+      "slug": "final-fantasy-tactics-advance",
+      "metacritic": 81,
+      "ign": 8.5,
+      "genre": "Tactical RPG",
+      "tags": ["tactics", "strategy", "job-system"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": true,
+      "storyLength": 40,
+      "releaseDate": "2003-02-14",
+      "pros": [
+        "Deep tactical combat",
+        "Extensive job and class system",
+        "Great replay value"
+      ],
+      "cons": [
+        "Steep learning curve",
+        "Occasional repetitive missions"
+      ],
+      "gameDetailUrl": "/games/final-fantasy-tactics-advance",
+      "coreHighlight": "Grid-based tactical battles with hundreds of job/class combinations.",
+      "historicalSignificance": "Brought the celebrated Ivalice tactical formula to a portable system for the first time.",
+      "whyStillWorthPlaying": "The strategy depth and customization options rival modern tactical RPGs."
+      ,"series": ""
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "title": "The Legend of Zelda: A Link to the Past & Four Swords",
+      "release": {
+      "developers": ["Nintendo"]
+    },
+      "year": 2002,
+      "description": "A re-release of the classic Zelda game along with the new Four Swords multiplayer experience.",
+      "slug": "zelda-link-to-the-past-four-swords",
+      "metacritic": 95,
+      "ign": 9.5,
+      "genre": "Adventure PRG",
+      "tags": ["zelda", "classic", "multiplayer"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": true,
+      "storyLength": 25,
+      "releaseDate": "2002-12-02",
+      "pros": [
+        "Timeless classic with updated visuals",
+        "Great multiplayer mode",
+        "Challenging puzzles"
+      ],
+      "cons": [
+        "Shorter than the original game",
+        "Four Swords multiplayer mode can feel repetitive"
+      ],
+      "gameDetailUrl": "/games/the-legend-of-zelda-a-link-to-the-past-and-four-swords",
+      "coreHighlight": "Faithful remake of Pokémon Red/Blue with wireless multiplayer support.",
+      "historicalSignificance": "Helped reintroduce the Pokémon franchise to a new generation of handheld players.",
+      "whyStillWorthPlaying": "Remains the definitive way to experience Kanto with modernized mechanics."
+      ,"series": ""
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "title": "Castlevania: Aria of Sorrow",
+      "release": {
+      "developers": ["Konami"]
+    },
+      "year": 2003,
+      "description": "A fast-paced action RPG set in Dracula's castle with a unique 'Tactical Soul' system.",
+      "slug": "castlevania-aria-of-sorrow",
+      "metacritic": 89,
+      "ign": 9.0,
+      "genre": "Action RPG",
+      "tags": ["castlevania", "action", "gothic"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 20,
+      "releaseDate": "2003-05-06",
+      "pros": [
+        "Fast-paced combat",
+        "Rich exploration",
+        "Innovative soul system"
+      ],
+      "cons": [
+        "Shorter length",
+        "Limited character progression"
+      ],
+      "gameDetailUrl": "/games/castlevania-aria-of-sorrow",
+      "coreHighlight": "Fast-paced combat with a unique 'Tactical Soul' system.",
+      "historicalSignificance": "Revitalized the Castlevania franchise with action RPG mechanics and set a precedent for later titles.",
+      "whyStillWorthPlaying": "Its tight combat and exploration are still fun, and the soul system is a unique RPG feature."
+      ,"series": ""
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "title": "Final Fantasy VI Advance",
+      "release": {
+      "developers": ["Square Enix"]
+    },
+      "year": 2006,
+      "description": "A re-release of the classic Final Fantasy VI with enhanced graphics and sound.",
+      "slug": "final-fantasy-vi-advance",
+      "metacritic": 90,
+      "ign": 9.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["classic", "fantasy", "story-rich"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 40,
+      "releaseDate": "2006-02-03",
+      "pros": [
+        "Iconic storyline and characters",
+        "Enhanced visuals and music",
+        "Complex, emotionally-driven narrative"
+      ],
+      "cons": [
+        "Slow combat pacing",
+        "Somewhat dated gameplay mechanics"
+      ],
+      "gameDetailUrl": "/games/final-fantasy-vi-advance",
+      "coreHighlight": "ATB combat with an operatic, character-driven story adapted for handheld play.",
+      "historicalSignificance": "Made one of Final Fantasy’s foundational entries widely accessible on GBA with bonus content.",
+      "whyStillWorthPlaying": "The timeless narrative beats and snappy ATB battles remain engaging on short sessions."
+      ,"series": ""
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "title": "Pokémon FireRed / LeafGreen",
+      "release": {
+        "developers": ["Game Freak"]
+      },
+      "year": 2004,
+      "description": "A remake of the original Pokémon Red and Blue with updated graphics and new features.",
+      "slug": "pokemon-firered-leafgreen",
+      "metacritic": 85,
+      "ign": 8.5,
+      "genre": "Turn-Based RPG",
+      "tags": ["pokemon", "remake", "classic"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": true,
+      "storyLength": 25,
+      "releaseDate": "2004-09-09",
+      "pros": [
+        "Updated graphics and sound",
+        "Classic Pokémon experience",
+        "Multiplayer trading and battles"
+      ],
+      "cons": [
+        "Somewhat easy for veterans",
+        "Limited post-game content"
+      ],
+      "gameDetailUrl": "/games/pokemon-firered-leafgreen",
+      "coreHighlight": "Faithful remake of Pokémon Red/Blue with wireless multiplayer support.",
+      "historicalSignificance": "Helped reintroduce the Pokémon franchise to a new generation of handheld players.",
+      "whyStillWorthPlaying": "Remains the definitive way to experience Kanto with modernized mechanics."
+      ,"series": "Pokémon"
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "title": "Tales of Phantasia",
+      "release": {
+      "developers": ["Namco"]
+    },
+      "year": 2006,
+      "description": "A well-regarded action RPG from the Tales series, featuring real-time battles and a deep story.",
+      "slug": "tales-of-phantasia",
+      "metacritic": 76,
+      "ign": 8.0,
+      "genre": "Action RPG",
+      "tags": ["tales", "action", "real-time-combat"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2006-02-17",
+      "pros": [
+        "Real-time combat",
+        "Expansive world",
+        "Great character interaction"
+      ],
+      "cons": [
+        "Slow start",
+        "Frustrating random encounters"
+      ],
+      "gameDetailUrl": "/games/tales-of-phantasia",
+      "coreHighlight": "Real-time combat with a deep story in the Tales series.",
+      "historicalSignificance": "Launched Tales of Phantasia onto the GBA with its combination of real-time combat and classic JRPG narrative.",
+      "whyStillWorthPlaying": "Great character interaction and fast-paced battles keep it entertaining for both newcomers and fans of the series."
+       ,"series": ""
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "title": "Mother 3",
+      "release": {
+      "developers": ["Nintendo"]
+    },
+      "year": 2006,
+      "description": "A cult classic with a heartfelt story, quirky humor, and unique battle system.",
+      "slug": "mother-3",
+      "metacritic": 90,
+      "ign": 9.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["mother", "quirky", "story-driven"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2006-04-20",
+      "pros": [
+        "Heartfelt and unique story",
+        "Fantastic music",
+        "Quirky humor"
+      ],
+      "cons": [
+        "Occasional pacing issues",
+        "Limited release outside Japan"
+      ],
+       "gameDetailUrl": "/games/mother-3",
+       "coreHighlight": "Emotionally powerful narrative with rhythm-based combat.",
+       "historicalSignificance": "Became one of gaming’s most famous unreleased-outside-Japan RPGs, gaining cult status.",
+       "whyStillWorthPlaying": "Its emotional depth, humor, and music remain unmatched in handheld RPG storytelling."
+       ,"series": ""
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "title": "Breath of Fire II",
+      "release": {
+      "developers": ["Capcom"]
+    },
+      "year": 2001,
+      "description": "A classic RPG that follows the journey of Ryu and his friends in a battle against an ancient evil.",
+      "slug": "breath-of-fire-ii",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["classic", "dragon", "party-based"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 35,
+      "releaseDate": "2001-03-01",
+      "pros": [
+        "Great character depth",
+        "Rich world-building",
+        "Fun combat system"
+      ],
+      "cons": [
+        "Slow combat pacing",
+        "Can be grind-heavy at times"
+      ],
+      "gameDetailUrl": "/games/breath-of-fire-ii",
+      "coreHighlight": "Dragon transformations and a classic party-based JRPG loop.",
+      "historicalSignificance": "Helped establish Capcom’s long-running JRPG brand, reintroduced to a new handheld audience.",
+      "whyStillWorthPlaying": "A straightforward ‘comfort food’ RPG with nostalgic art and satisfying progression."
+      ,"series": ""
+    },
+    {
+      "id": 11,
+      "rank": 11,
+      "title": "Mario & Luigi: Superstar Saga",
+      "release": {
+      "developers": ["AlphaDream"]
+    },
+      "year": 2003,
+      "description": "A humorous and engaging RPG featuring Mario and Luigi on a quest to rescue Princess Peach.",
+      "slug": "mario-and-luigi-superstar-saga",
+      "metacritic": 89,
+      "ign": 9.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["mario", "humor", "party-based"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 25,
+      "releaseDate": "2003-11-17",
+      "pros": [
+        "Funny and charming writing",
+        "Cooperative combat mechanics",
+        "Great music"
+      ],
+      "cons": [
+        "Fairly easy difficulty",
+        "Some puzzles can be a bit repetitive"
+      ],
+      "gameDetailUrl": "/games/mario-luigi-superstar-saga",
+      "coreHighlight": "Action-command battle system with humor-driven storytelling.",
+      "historicalSignificance": "Launched the Mario & Luigi RPG subseries, blending comedy with JRPG mechanics.",
+      "whyStillWorthPlaying": "Its humor, charm, and innovative interactive combat make it timeless."
+      ,"series": ""
+    },
+    {
+      "id": 12,
+      "rank": 12,
+      "title": "Fire Emblem",
+      "release": {
+      "developers": ["Intelligent Systems"]
+    },
+      "year": 2003,
+      "description": "A tactical RPG with deep strategy elements, where players command a group of heroes through story-driven battles.",
+      "slug": "fire-emblem",
+      "metacritic": 89,
+      "ign": 9.0,
+      "genre": "Tactical RPG",
+      "tags": ["strategy", "tactics", "medieval"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 40,
+      "releaseDate": "2003-04-02",
+      "pros": [
+        "Challenging tactical gameplay",
+        "Character permadeath adds depth",
+        "Rich narrative"
+      ],
+      "cons": [
+        "Can be punishing for new players",
+        "Limited character variety"
+      ],
+      "gameDetailUrl": "/games/fire-emblem",
+      "coreHighlight": "Grid-based, turn-by-turn battles with permanent character death and meaningful positioning.",
+      "historicalSignificance": "Introduced Western audiences to the Fire Emblem series, helping define the portable tactics-RPG boom.",
+      "whyStillWorthPlaying": "Its razor-sharp strategy, memorable cast, and high stakes still set the standard for handheld tactical RPGs."
+      ,"series": ""
+    },
+    {
+      "id": 13,
+      "rank": 13,
+      "title": "Golden Sun: Dark Dawn",
+      "release": {
+      "developers": ["Camelot Software Planning"]
+    },
+      "year": 2010,
+      "description": "The third installment in the Golden Sun series, continuing the story with new characters and expanded magic abilities.",
+      "slug": "golden-sun-dark-dawn",
+      "metacritic": 83,
+      "ign": 8.5,
+      "genre": "Turn-Based RPG",
+      "tags": ["jrpg", "classic", "magic-system"],
+      "platforms": ["Nintendo DS"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2010-11-29",
+      "pros": [
+        "Beautiful visuals",
+        "Complex Djinni system",
+        "Exciting combat mechanics"
+      ],
+      "cons": [
+        "A bit predictable",
+        "Not as fresh as the original"
+      ],
+      "gameDetailUrl": "/games/golden-sun-dark-dawn",
+      "coreHighlight": "Return of the Djinni and Psynergy puzzle systems with a new generation of adepts.",
+      "historicalSignificance": "Revived a beloved GBA JRPG franchise on DS, bridging classic mechanics with touch-era presentation.",
+      "whyStillWorthPlaying": "Fans of exploration-heavy JRPGs will enjoy its lush world, clever dungeon puzzles, and flexible party builds."
+      ,"series": ""
+    },
+    {
+      "id": 14,
+      "rank": 14,
+      "title": "Lunar Legend",
+      "release": {
+      "developers": ["Game Arts"]
+    },
+      "year": 2002,
+      "description": "A simplified version of the classic Lunar story, optimized for the Game Boy Advance.",
+      "slug": "lunar-legend",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["lunar", "classic", "story-rich"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 25,
+      "releaseDate": "2002-04-01",
+      "pros": [
+        "Heartfelt story",
+        "Classic RPG feel",
+        "Charming visuals"
+      ],
+      "cons": [
+        "Simplified gameplay compared to the original",
+        "Limited world exploration"
+      ],
+      "gameDetailUrl": "/games/lunar-legend",
+      "coreHighlight": "Compact retelling of a renowned JRPG narrative tailored for handheld play.",
+      "historicalSignificance": "Brought a console JRPG classic to GBA, widening access to a seminal story-driven series.",
+      "whyStillWorthPlaying": "A cozy, character-led adventure with brisk pacing—ideal for players who value narrative over grind."
+       ,"series": ""
+    },
+    {
+      "id": 15,
+      "rank": 15,
+      "title": "Magical Vacation",
+      "release": {
+      "developers": ["Marubeni"]
+    },
+      "year": 2001,
+      "description": "A colorful RPG set in a magical world with a unique battle system and adorable characters.",
+      "slug": "magical-vacation",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["magical", "cute", "party-based"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2001-08-01",
+      "pros": [
+        "Charming art style",
+        "Great sense of exploration",
+        "Fun battle mechanics"
+      ],
+      "cons": [
+        "A bit too easy",
+        "Lack of depth in the story"
+      ],
+      "gameDetailUrl": "/games/magical-vacation",
+      "coreHighlight": "Elemental affinity system and whimsical school-of-magic theme with vibrant spritework.",
+      "historicalSignificance": "A Japan-only cult favorite that influenced the studio’s later work (e.g., Magical Starsign).",
+      "whyStillWorthPlaying": "Its colorful presentation and approachable systems make it a relaxing pick for fans of lighthearted JRPGs."
+      ,"series": ""
+    },
+    {
+      "id": 16,
+      "rank": 16,
+      "title": "Breath of Fire",
+      "release": {
+      "developers": ["Capcom"]
+    },
+      "year": 2001,
+      "description": "A classic RPG where you play as Ryu, a dragon boy on a quest to save the world from an ancient evil.",
+      "slug": "breath-of-fire",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["classic", "dragon", "party-based"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2001-06-01",
+      "pros": [
+        "Great dragon transformation mechanic",
+        "Solid turn-based combat",
+        "Fun character interactions"
+      ],
+      "cons": [
+        "A bit slow-paced",
+        "Repetitive combat at times"
+      ],
+      "gameDetailUrl": "/games/breath-of-fire",
+      "coreHighlight": "Dragon transformations and a classic party-based JRPG loop.",
+      "historicalSignificance": "Helped establish Capcom’s long-running JRPG brand, reintroduced to a new handheld audience.",
+      "whyStillWorthPlaying": "A straightforward ‘comfort food’ RPG with nostalgic art and satisfying progression."
+      ,"series": ""
+    },
+    {
+      "id": 17,
+      "rank": 17,
+      "title": "Final Fantasy IV Advance",
+      "release": {
+      "developers": ["Square Enix"]
+    },
+      "year": 2005,
+      "description": "A remake of the classic Final Fantasy IV, with enhanced visuals and added features.",
+      "slug": "final-fantasy-iv-advance",
+      "metacritic": 85,
+      "ign": 8.5,
+      "genre": "Turn-Based RPG",
+      "tags": ["fantasy", "classic", "remake"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2005-06-01",
+      "pros": [
+        "Classic story and characters",
+        "Enhanced graphics and sound",
+        "Great combat system"
+      ],
+      "cons": [
+        "Still feels dated in some aspects",
+        "Not much new content"
+      ],
+      "gameDetailUrl": "/games/final-fantasy-iv-advance",
+      "coreHighlight": "ATB combat with an operatic, character-driven story adapted for handheld play.",
+      "historicalSignificance": "Made one of Final Fantasy’s foundational entries widely accessible on GBA with bonus content.",
+      "whyStillWorthPlaying": "The timeless narrative beats and snappy ATB battles remain engaging on short sessions."
+      ,"series": ""
+    },
+    {
+      "id": 18,
+      "rank": 18,
+      "title": "Kingdom Hearts: Chain of Memories",
+      "release": {
+      "developers": ["Square Enix"]
+    },
+      "year": 2004,
+      "description": "A card-based battle system RPG set in the Kingdom Hearts universe, with a gripping story and innovative mechanics.",
+      "slug": "kingdom-hearts-chain-of-memories",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Action RPG",
+      "tags": ["kingdom-hearts", "card-system", "action"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 20,
+      "releaseDate": "2004-11-11",
+      "pros": [
+        "Unique card-based combat system",
+        "Gripping story",
+        "Great visuals and music"
+      ],
+      "cons": [
+        "Repetitive gameplay",
+        "Card system can feel clunky"
+      ],
+      "gameDetailUrl": "/games/kingdom-hearts-chain-of-memories",
+      "coreHighlight": "Real-time action layered with deck-building card mechanics and Disney/Final Fantasy crossover lore.",
+      "historicalSignificance": "Bridged the narrative gap between KH1 and KH2 on a handheld with an experimental combat system.",
+      "whyStillWorthPlaying": "Its deck-building twist keeps combat tactical, and the story is essential for Kingdom Hearts fans."
+      ,"series": ""
+    },
+    {
+      "id": 19,
+      "rank": 19,
+      "title": "Riviera: The Promised Land",
+      "release": {
+      "developers": ["Sting Entertainment"]
+    },
+      "year": 2005,
+      "description": "A unique tactical RPG with a focus on exploration, puzzle-solving, and an interesting item collection system.",
+      "slug": "riviera-the-promised-land",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Tactical RPG",
+      "tags": ["tactical", "unique", "puzzle"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 20,
+      "releaseDate": "2005-01-24",
+      "pros": [
+        "Innovative battle and inventory system",
+        "Strong character development",
+        "Interesting storyline"
+      ],
+      "cons": [
+        "Can be confusing at first",
+        "Limited replay value"
+      ],
+      "gameDetailUrl": "/games/riviera-the-promised-land",
+      "coreHighlight": "Choice-driven progression, limited-use items, and a hybrid VN/Tactics structure.",
+      "historicalSignificance": "One of the earliest GBA titles to blend visual-novel narrative flow with tactical RPG systems.",
+      "whyStillWorthPlaying": "Its unusual structure and resource-management battles feel fresh and rewarding today."
+      ,"series": ""
+    },
+    {
+      "id": 20,
+      "rank": 20,
+      "title": "Lufia: The Ruins of Lore",
+      "release": {
+      "developers": ["Taito"]
+    },
+      "year": 2002,
+      "description": "A traditional RPG with classic elements such as turn-based combat, an interesting story, and multiple characters.",
+      "slug": "lufia-the-ruins-of-lore",
+      "metacritic": 80,
+      "ign": 8.0,
+      "genre": "Turn-Based RPG",
+      "tags": ["classic", "fantasy", "story-driven"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": false,
+      "storyLength": 30,
+      "releaseDate": "2002-02-10",
+      "pros": [
+        "Classic RPG formula",
+        "Great soundtrack",
+        "Deep character interactions"
+      ],
+      "cons": [
+        "Slow pacing",
+        "Occasional repetitive gameplay"
+      ],
+      "gameDetailUrl": "/games/lufia-the-ruins-of-lore",
+      "coreHighlight": "Monster-capture elements and job-like customization within a traditional JRPG framework.",
+      "historicalSignificance": "Extended the Lufia brand onto GBA with systems that anticipated later monster-raising trends.",
+      "whyStillWorthPlaying": "A comfort-food JRPG with catchy music and flexible party growth for fans of 16-bit-style adventures."
+      ,"series": "" 
+    },
+    {
+      "id": 21,
+      "rank": 21,
+      "title": "Pokémon Ruby / Sapphire / Emerald",
+      "release": {
+        "developers": ["Game Freak"]
+      },
+      "year": 2002,
+      "description": "Pokémon Ruby and Sapphire introduced the Hoenn region with over 100 new Pokémon, enhanced graphics, and double battles. Emerald expanded the experience with the Battle Frontier.",
+      "slug": "pokemon-ruby-sapphire-emerald",
+      "metacritic": 82,
+      "ign": 8.5,
+      "genre": "Turn-Based RPG",
+      "tags": ["monster-collecting", "JRPG", "adventure"],
+      "platforms": ["Game Boy Advance"],
+      "hasMultiplayer": true,
+      "storyLength": 35,
+      "releaseDate": "2002-11-21",
+      "pros": [
+        "Introduction of Hoenn region",
+        "Battle Frontier in Emerald",
+        "New Pokémon abilities and natures"
+      ],
+      "cons": [
+        "Limited backward compatibility with earlier Pokémon",
+        "Too much water (IGN classic critique)"
+      ],
+      "gameDetailUrl": "/games/pokemon-ruby-sapphire-emerald",
+      "coreHighlight": "Massive Hoenn adventure with trading, double battles, and Emerald’s Battle Frontier.",
+      "historicalSignificance": "Best-selling GBA titles, huge global impact, cementing Pokémon’s dominance in handheld RPGs.",
+      "whyStillWorthPlaying": "Deep breeding, battling, and collectible systems endure.",
+      "series": "Pokémon"
+    }
+    ,
+    {
+      "id": 22,
+  "rank": 22,
+  "title": "Pokémon Mystery Dungeon: Red Rescue Team",
+  "release": {
+    "developers": ["Chunsoft"]
+  },
+  "year": 2005,
+  "description": "A spin-off RPG where players take on the role of a Pokémon themselves, exploring randomly generated dungeons and building rescue teams.",
+  "slug": "pokemon-mystery-dungeon-red-rescue-team",
+  "metacritic": 69,
+  "ign": 7.0,
+  "genre": "Adventure RPG",
+  "tags": ["dungeon-crawler", "roguelike", "monster-collecting"],
+  "platforms": ["Game Boy Advance"],
+  "hasMultiplayer": false,
+  "storyLength": 25,
+  "releaseDate": "2005-11-17",
+  "pros": [
+    "Unique dungeon-crawling gameplay",
+    "Emotional story with Pokémon as protagonists",
+    "High replay value through random dungeons"
+  ],
+  "cons": [
+    "Repetitive dungeon design",
+    "Simpler battle mechanics compared to mainline Pokémon"
+  ],
+  "gameDetailUrl": "/games/pokemon-mystery-dungeon-red-rescue-team",
+  "coreHighlight": "Play as a Pokémon and form rescue teams to explore endless dungeons.",
+  "historicalSignificance": "First entry in the long-running Pokémon Mystery Dungeon spin-off series.",
+  "whyStillWorthPlaying": "A charming Pokémon RPG spin-off with emotional storytelling and addictive dungeon exploration.",
+  "series": "Pokémon"
+    }
+]
+  

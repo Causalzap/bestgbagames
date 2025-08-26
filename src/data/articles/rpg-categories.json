@@ -1,0 +1,67 @@
+[
+    {
+      "title": "Turn-Based RPGs",
+      "slug": "turn-based-rpgs",
+      "icon": "♟️",
+      "path": "/rpg-hub/turn-based",
+      "description": "Classic JRPG-style combat and progression systems",
+      "tagline": "Strategy and planning at your pace",
+      "thumbnail": "/images/genres/turn-based.jpg",
+      "games": ["golden-sun", "golden-sun-the-lost-age", "ff-tactics-advance"],
+      "featuredGames": ["golden-sun", "ff-tactics-advance"],
+      "characteristics": [
+        {"key": "Combat Style", "value": "Turn-based"},
+        {"key": "Key Element", "value": "Character progression systems"},
+        {"key": "Playstyle", "value": "Strategic, methodical"}
+      ]
+    },
+    {
+      "title": "Action RPGs",
+      "slug": "action-rpgs",
+      "icon": "⚔️",
+      "path": "/rpg-hub/action",
+      "description": "Real-time combat with RPG elements",
+      "tagline": "Fast-paced action with deep RPG mechanics",
+      "thumbnail": "/images/genres/action.jpg",
+      "games": ["kingdom-hearts-chain-of-memories", "sword-of-mana", "zelda-minish-cap"],
+      "featuredGames": ["kingdom-hearts-chain-of-memories", "zelda-minish-cap"],
+      "characteristics": [
+        {"key": "Combat Style", "value": "Real-time action"},
+        {"key": "Key Element", "value": "Action-oriented gameplay"},
+        {"key": "Playstyle", "value": "Fast-paced, dynamic"}
+      ]
+    },
+    {
+      "title": "Tactical RPGs",
+      "slug": "tactical-rpgs",
+      "icon": "🎯",
+      "path": "/rpg-hub/tactical",
+      "description": "Grid-based strategy and deep battle mechanics",
+      "tagline": "Strategic positioning and tactical planning",
+      "thumbnail": "/images/genres/tactical.jpg",
+      "games": ["fire-emblem", "final-fantasy-tactics-advance", "advance-wars"],
+      "featuredGames": ["fire-emblem", "final-fantasy-tactics-advance"],
+      "characteristics": [
+        {"key": "Combat Style", "value": "Grid-based tactical"},
+        {"key": "Key Element", "value": "Strategic positioning"},
+        {"key": "Playstyle", "value": "Calculated, methodical"}
+      ]
+    },
+    {
+      "title": "Adventure RPGs",
+      "slug": "adventure-rpgs",
+      "icon": "🗺️",
+      "path": "/rpg-hub/adventure",
+      "description": "Exploration-focused with light RPG elements",
+      "tagline": "Explore worlds and uncover hidden stories",
+      "thumbnail": "/images/genres/adventure.jpg",
+      "games": ["pokemon-mystery-dungeon", "boktai", "harvest-moon"],
+      "featuredGames": ["pokemon-mystery-dungeon", "harvest-moon"],
+      "characteristics": [
+        {"key": "Combat Style", "value": "Exploration-focused"},
+        {"key": "Key Element", "value": "Story-driven quests"},
+        {"key": "Playstyle", "value": "Relaxed, immersive"}
+      ]
+    }
+  ]
+  

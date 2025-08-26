@@ -1,0 +1,31 @@
+{
+    "title": "Tactical RPG Strategy Handbook",
+    "slug": "tactical-rpgs",
+    "description": "Command your forces to victory in GBA's deepest tactical RPGs",
+    "sections": [
+      {
+        "title": "Grid-Based Combat Fundamentals",
+        "content": "Tactical RPGs require careful positioning and unit management..."
+      },
+      {
+        "title": "Top Tactical RPGs on GBA",
+        "games": [
+          {
+            "title": "Fire Emblem",
+            "slug": "fire-emblem",
+            "reason": "Permadeath mechanic adds strategic weight"
+          },
+          {
+            "title": "Final Fantasy Tactics Advance",
+            "slug": "ff-tactics-advance",
+            "reason": "Deep job system and law mechanics"
+          }
+        ]
+      }
+    ],
+    "recommendedGames": [
+      "fire-emblem",
+      "ff-tactics-advance",
+      "advance-wars"
+    ]
+  }

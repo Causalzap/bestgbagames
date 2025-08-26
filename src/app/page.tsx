@@ -119,8 +119,8 @@ export default function HomePage() {
                 <div key={game.slug} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="aspect-[3/4] relative">
                     <Image 
-                      src={coverPath}
-                      alt={game.coverAlt}
+                      src={`/images/covers/${(game.slug ?? 'placeholder')}.jpg`}   // slug 兜底
+                      alt={game.coverAlt ?? `${game.title} cover`}                  // alt 兜底
                       fill
                       className="object-cover rounded-t-xl"
                       onError={(e) => {
@@ -137,9 +137,9 @@ export default function HomePage() {
                       <h3 className="text-xl font-bold text-gray-900">{game.title}</h3>
                     </div>
                     <div className="flex justify-between text-sm text-gray-500 mb-3">
-                      <span>{game.release.year}</span>
+                      <span>{game.year || 'Year unknown'}</span>
                       <span className="max-w-[60%] text-right">
-                        {game.release.developers.join(', ')}
+                      {game.developer}
                       </span>
                     </div>
                     <p className="text-gray-600 mb-4 text-sm">{game.coreHighlight}</p>
@@ -206,15 +206,15 @@ export default function HomePage() {
                       <div key={game.slug} className="flex items-center bg-white p-4 rounded-lg">
                         <div className="relative w-16 h-16 flex-shrink-0">
                           <Image 
-                            src={`/images/covers/${game.slug}.jpg`}
-                            alt={game.coverAlt}
+                            src={`/images/covers/${(game.slug ?? 'placeholder')}.jpg`}   // slug 兜底
+                            alt={game.coverAlt ?? `${game.title} cover`}                  // alt 兜底
                             fill
                             className="object-cover rounded-lg"
                           />
                         </div>
                         <div className="ml-4">
                           <h4 className="font-bold text-gray-900">{game.title}</h4>
-                          <p className="text-sm text-gray-600">{game.release.year}</p>
+                          <p className="text-sm text-gray-600">{game.year || 'Year unknown'}</p>
                         </div>
                       </div>
                     );

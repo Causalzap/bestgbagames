@@ -2,29 +2,16 @@
 
 import { getGameBySlug } from '@/lib/gameData';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getEmbedUrl } from '@/lib/gameService';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function GameDetailPage({ params }: { params: { slug: string } }) {
-  const [game, setGame] = useState<any>(null);
+  const router = useRouter();
+  const game = getGameBySlug(params.slug);
   const [showGameEmbed, setShowGameEmbed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
-  // 使用 useEffect 确保在客户端获取数据
-  useEffect(() => {
-    // 获取游戏数据
-    const gameData = getGameBySlug(params.slug);
-    
-    // 如果找到游戏数据，直接设置状态
-    if (gameData) {
-      console.log("Game data loaded:", gameData);
-      setGame(gameData);
-    } else {
-      console.log("Game not found for slug:", params.slug);
-    }
-  }, [params.slug]);
-
   // 处理游戏嵌入
   const handlePlayClick = () => {
     setShowGameEmbed(true);
@@ -40,12 +27,12 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Game Not Found</h1>
-        <Link 
-          href="/best-games" 
+        <button 
+          onClick={() => router.push('/')}
           className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-all"
         >
-          Back to Best Games
-        </Link>
+          Back to Home
+        </button>
       </div>
     );
   }
@@ -53,38 +40,45 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        {/* 返回按钮 */}
+        {/* 返回按钮 - 使用路由器返回 */}
         <div className="mb-6">
-          <Link 
-            href="/best-games" 
+          <button 
+            onClick={() => router.back()}
             className="text-purple-600 hover:text-purple-800 flex items-center text-sm"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
             </svg>
-            Back to Best Games
-          </Link>
+            Go Back
+          </button>
         </div>
         
         {/* 游戏信息区域 */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
           <div className="md:flex">
-            {/* 封面区域 */}
+          {/*  封面区域 */}
             <div className="md:w-1/3 p-4">
               <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-md">
-                <Image 
-                  src={`/images/covers/${game.slug}.jpg`}
-                  alt={game.coverAlt}
-                  fill
-                  className="object-cover"
-                  priority
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = '/images/covers/default.png';
-                  }}
-                />
+                {game.slug ? (
+                  <Image
+                    src={`/images/covers/${game.slug}.jpg`}
+                    alt={game.coverAlt ?? `${game.title} cover`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                ) : (
+                  <Image
+                    src="/images/covers/placeholder.jpg"
+                    alt={game.coverAlt ?? `${game.title} cover`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                )}
               </div>
             </div>
+
             
             {/* 游戏详情 */}
             <div className="md:w-2/3 p-4 md:p-6">
@@ -94,34 +88,37 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
                     <div className="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-full mr-3">
                       #{game.rank}
                     </div>
-                    {/* 直接显示年份 */}
-                    <span className="text-gray-500 text-sm">
-                      {game.year || 'Year unknown'}
-                    </span>
+                    <span className="text-gray-500 text-sm">{game.year || 'Year unknown'}</span>
                   </div>
                   
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">{game.title}</h1>
                   
                   <div className="mt-4">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {game.genre.map((g: string, idx: number) => (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {Array.isArray(game.genre) ? (
+                      game.genre.map((g: string, idx: number) => (
                         <span 
                           key={idx} 
                           className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full"
                         >
                           {g}
                         </span>
-                      ))}
-                    </div>
+                      ))
+                    ) : (
+                      <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">
+                        {game.genre}
+                      </span>
+                    )}
+                  </div>
+
                     
-                    {/* 直接显示开发商 */}
                     <p className="text-sm text-gray-600">
                       <span className="font-semibold">Developer:</span> {game.developer}
                     </p>
                   </div>
                 </div>
                 
-                {/* 立即玩按钮 - 顶部放置 */}
+                {/* 移动端立即玩按钮 */}
                 <div className="md:hidden">
                   <button
                     onClick={handlePlayClick}
@@ -175,24 +172,25 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
                 </button>
               </div>
               
-              {/* 加载状态和内嵌游戏 */}
-              {isLoading ? (
-                <div className="aspect-video flex flex-col items-center justify-center">
+              {/* 加载状态 */}
+              {isLoading && (
+                <div className="h-60 flex flex-col items-center justify-center">
                   <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-purple-500"></div>
                   <p className="mt-3 text-gray-700">Loading game, please wait...</p>
                 </div>
-              ) : (
-                <div className="relative aspect-video">
-                  <iframe
-                    src={getEmbedUrl(game.slug)}
-                    title={`Play ${game.title}`}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    sandbox="allow-same-origin allow-scripts"
-                  ></iframe>
-                </div>
               )}
+              
+              {/* 内嵌游戏 */}
+              <div className={`${isLoading ? 'hidden' : 'block'}`}>
+                <iframe
+                  src={getEmbedUrl(game.slug)}
+                  title={`Play ${game.title}`}
+                  className="w-full h-[400px]"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  sandbox="allow-same-origin allow-scripts"
+                ></iframe>
+              </div>
               
               {/* 底部法律信息 */}
               <div className="bg-gray-100 p-3 text-center text-xs text-gray-600 border-t border-gray-200">
@@ -202,7 +200,7 @@ export default function GameDetailPage({ params }: { params: { slug: string } })
           </div>
         )}
         
-        {/* 底部立即玩按钮 - 桌面端 */}
+        {/* 桌面端立即玩按钮 */}
         <div className="hidden md:block text-center mt-8">
           <button
             onClick={handlePlayClick}

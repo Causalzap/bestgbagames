@@ -1,0 +1,129 @@
+{
+    "title": "Adventure RPGs Exploration Guide",
+    "slug": "adventure-rpgs",
+    "description": "Uncover secrets and solve puzzles in the best adventure RPGs on Game Boy Advance",
+    "sections": [
+      {
+        "title": "What are Adventure RPGs?",
+        "content": "Adventure RPGs focus on exploration, puzzle-solving, and story over complex combat systems. These games often feature large worlds to explore, secrets to uncover, and a strong emphasis on narrative.",
+        "image": "/images/guides/adventure-exploration.jpg",
+        "caption": "Exploring vast worlds is a key element of adventure RPGs"
+      },
+      {
+        "title": "Core Elements",
+        "content": "Key features of adventure RPGs include:",
+        "items": [
+          "Exploration-driven gameplay",
+          "Puzzle-solving in dungeons and overworld",
+          "Item-based progression (find items to unlock new areas)",
+          "Rich storytelling and character interactions",
+          "Simplified combat or action-oriented combat"
+        ]
+      },
+      {
+        "title": "Top Adventure RPGs on GBA",
+        "games": [
+          {
+            "title": "The Legend of Zelda: The Minish Cap",
+            "slug": "zelda-minish-cap",
+            "reason": "Masterful blend of action, puzzles, and exploration with a unique shrinking mechanic"
+          },
+          {
+            "title": "Golden Sun",
+            "slug": "golden-sun",
+            "reason": "While primarily a turn-based RPG, its intricate puzzle-filled dungeons and exploration make it a great adventure"
+          },
+          {
+            "title": "Sword of Mana",
+            "slug": "sword-of-mana",
+            "reason": "Action-oriented with a focus on exploration and a beautiful world"
+          },
+          {
+            "title": "Boktai: The Sun is in Your Hand",
+            "slug": "boktai",
+            "reason": "Unique solar sensor mechanic and stealth-based gameplay create an adventurous experience"
+          }
+        ]
+      },
+      {
+        "title": "Exploration Tips",
+        "content": "Become a master explorer with these tips:",
+        "tips": [
+          "Talk to every NPC for clues and side quests",
+          "Check every nook and cranny for hidden items",
+          "Experiment with items in the environment",
+          "Take notes of puzzles you can't solve yet and return later",
+          "Use maps to mark points of interest"
+        ]
+      },
+      {
+        "title": "Puzzle-Solving Strategies",
+        "content": "Overcome challenging puzzles with these approaches:",
+        "strategies": [
+          {
+            "name": "Environmental Observation",
+            "description": "Look for visual clues in the environment"
+          },
+          {
+            "name": "Item Combination",
+            "description": "Try combining items in your inventory"
+          },
+          {
+            "name": "Pattern Recognition",
+            "description": "Look for repeating patterns in puzzles"
+          }
+        ]
+      },
+      {
+        "title": "Hidden Secrets & Easter Eggs",
+        "content": "Adventure RPGs are filled with secrets:",
+        "secrets": [
+          {
+            "game": "The Legend of Zelda: The Minish Cap",
+            "secret": "Hidden Kinstone fusions with NPCs"
+          },
+          {
+            "game": "Golden Sun",
+            "secret": "Djinn hidden in obscure locations"
+          },
+          {
+            "game": "Boktai",
+            "secret": "Real-time solar sensor effects"
+          }
+        ]
+      },
+      {
+        "title": "World-Building Techniques",
+        "content": "How adventure RPGs create immersive worlds:",
+        "techniques": [
+          "Environmental storytelling",
+          "Lore scattered through books and artifacts",
+          "Distinct regions with unique cultures",
+          "Day/night cycles affecting gameplay"
+        ]
+      }
+    ],
+    "recommendedGames": [
+      "zelda-minish-cap",
+      "golden-sun",
+      "sword-of-mana",
+      "boktai"
+    ],
+    "seoKeywords": [
+      "adventure rpg guide",
+      "gba exploration games",
+      "best adventure games gba",
+      "puzzle-solving rpgs",
+      "zelda minish cap guide"
+    ],
+    "relatedGuides": [
+      {
+        "title": "Action RPG Combat Guide",
+        "path": "/guides/action-rpgs"
+      },
+      {
+        "title": "Secrets and Easter Eggs",
+        "path": "/guides/secrets"
+      }
+    ]
+  }

@@ -20,7 +20,7 @@ function loadGameSlugs() {
       .filter(g => typeof g.slug === 'string' && g.slug.trim().length > 0)
       .filter(g => (seen.has(g.slug) ? false : (seen.add(g.slug), true)));
 
-    console.log(`[sitemap] loaded ${items.length} slugs from best-games.json`);
+    //console.log(`[sitemap] loaded ${items.length} slugs from best-games.json`);
     return items;
   } catch (e) {
     console.warn('[sitemap] Failed to parse best-games.json:', e?.message);
@@ -72,7 +72,11 @@ module.exports = {
   // robots.txt 精简：默认放行 +（可选）屏蔽训练爬虫
   robotsTxtOptions: {
     policies: [
-      { userAgent: '*', allow: '/' },
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/cdn-cgi/', '/_next/'], // 这里可以是数组
+      },
       { userAgent: 'GPTBot', disallow: '/' },
       { userAgent: 'CCBot', disallow: '/' },
       { userAgent: 'Amazonbot', disallow: '/' },

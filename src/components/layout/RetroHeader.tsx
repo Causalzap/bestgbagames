@@ -64,6 +64,20 @@ export default function RetroHeader() {
                   Hidden Gems
                 </Link>
               </li>
+
+              <li>
+                <Link 
+                  href="/rpg-hub" 
+                  className={`px-3 py-2 rounded text-sm font-medium ${
+                    isActive('/rpg-hub') 
+                      ? 'bg-purple-600 text-white shadow' 
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  RPG Hub
+                </Link>
+              </li>
+
               <li>
                 <Link 
                   href="/online-play" 

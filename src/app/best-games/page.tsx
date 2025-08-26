@@ -1,4 +1,3 @@
-// src/app/best-games/page.tsx
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
@@ -15,12 +14,14 @@ function GameCard({ game, rank, onPlayNow }: {
   rank: number;
   onPlayNow: (slug: string) => void;
 }) {
+  console.log("Rendering game data:", game);  // 调试：查看每个游戏的数据
+  
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-shadow h-full flex flex-col">
       <div className="aspect-[3/4] relative">
         <Image 
           src={`/images/covers/${game.slug}.jpg`}
-          alt={game.coverAlt}
+          alt={game.coverAlt || 'Game cover'}
           fill
           className="object-cover"
           onError={(e) => {
@@ -36,13 +37,14 @@ function GameCard({ game, rank, onPlayNow }: {
         <div>
           <h3 className="font-bold text-gray-900 text-lg mb-1">{game.title}</h3>
           
-          <div className="mb-3">
+           <div className="mb-3">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-sm text-gray-500">{game.genre.join(' / ')}</span>
-              <span className="text-sm text-gray-500">{game.release.year}</span>
+              <span className="text-sm text-gray-500">{Array.isArray(game.genre) ? game.genre.join(' / ') : game.genre}</span>
+              <span className="text-sm text-gray-500">{game.year ? game.year : 'Year unknown'}</span> {/* 显示年份 */}
             </div>
-            <span className="text-sm text-gray-500 block">{game.release.developers.join(', ')}</span>
-          </div>
+            <span className="text-sm text-gray-500 block">{game.developer}</span>
+          </div> 
+          
           
           <p className="text-gray-600 text-sm mb-4">{game.coreHighlight}</p>
         </div>
@@ -75,6 +77,7 @@ function GameCard({ game, rank, onPlayNow }: {
     </div>
   );
 }
+
 
 // 游戏内嵌模态框组件 - 直接弹出游戏内嵌
 function GameEmbedModal({ slug, onClose }: { 
@@ -160,23 +163,32 @@ function BestGamesContent() {
     
     // 应用类型筛选
     if (genre) {
-      filtered = filtered.filter(game => 
-        game.genre.some(g => 
-          g.toLowerCase().replace(/\s+/g, '-') === genre
-        )
-      );
+      const toSlug = (s: string) => s.toLowerCase().replace(/\s+/g, "-");
+    
+      filtered = filtered.filter((game) => {
+        if (Array.isArray(game.genre)) {
+          return game.genre.some((g) => toSlug(g) === genre);
+        }
+        return toSlug(game.genre) === genre;
+      });
     }
     
     // 应用搜索筛选
     if (search) {
       const query = search.toLowerCase();
-      filtered = filtered.filter(game => 
-        game.title.toLowerCase().includes(query) ||
-        game.genre.some(g => g.toLowerCase().includes(query)) ||
-        game.coreHighlight.toLowerCase().includes(query) ||
-        game.historicalSignificance.toLowerCase().includes(query)
-      );
+    
+      filtered = filtered.filter((game) => {
+        const genres = Array.isArray(game.genre) ? game.genre : [game.genre];
+      
+        return (
+          game.title.toLowerCase().includes(query) ||
+          genres.some((g) => g.toLowerCase().includes(query)) ||
+          game.coreHighlight.toLowerCase().includes(query) ||
+          game.historicalSignificance.toLowerCase().includes(query)
+        );
+      });
     }
+
     
     setFilteredGames(filtered);
   };
@@ -215,6 +227,8 @@ function BestGamesContent() {
     checkIfMobile();
     
     const allGames = getAllGames();
+    //console.log(allGames);  // 确认数据是否完整，尤其是 `year` 和 `developer`
+
     setGames(allGames);
     
     // 获取游戏分类
@@ -224,7 +238,7 @@ function BestGamesContent() {
     // 从URL获取筛选参数
     const genreParam = searchParams.get('genre');
     const searchParam = searchParams.get('search');
-    
+
     // 设置初始状态
     if (genreParam) {
       setActiveGenre(genreParam);
@@ -366,15 +380,19 @@ function BestGamesContent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredGames
             .filter(game => !!game.slug) // 过滤掉没有slug的游戏
-            .map((game, index) => (
-              <GameCard 
-                key={game.slug} 
-                game={game} 
-                rank={index + 1}
-                onPlayNow={handlePlayNow}
-              />
-            ))}
+            .map((game, index) => {
+              console.log("Rendering game:", game);  // 调试：查看每个游戏的数据
+              return (
+                <GameCard 
+                  key={game.slug} 
+                  game={game} 
+                  rank={index + 1}
+                  onPlayNow={handlePlayNow}
+                />
+              );
+            })}
         </div>
+
         
         {filteredGames.length === 0 && (
           <div className="text-center py-16">
@@ -392,6 +410,7 @@ function BestGamesContent() {
           </div>
         )}
         
+        {/* 
         {filteredGames.length > 0 && (
           <div className="mt-12 text-center">
             <div className="inline-flex items-center">
@@ -400,6 +419,8 @@ function BestGamesContent() {
             </div>
           </div>
         )}
+          */}
+          
       </div>
     </div>
   );

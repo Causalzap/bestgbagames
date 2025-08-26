@@ -88,7 +88,7 @@ export default async function HiddenGemsPage() {
                 <div className="ml-4">
                   <h3 className="text-2xl font-bold">{game.title}</h3>
                   <div className="text-sm text-gray-300">
-                    {game.release.year} &bull; {game.release.developers.join(", ")}
+                    {game.release?.year} &bull; {game.release?.developers?.join(", ")}
                   </div>
                 </div>
               </div>
@@ -128,9 +128,9 @@ export default async function HiddenGemsPage() {
                     
                     <div className="bg-gray-900 rounded-lg p-4">
                       <h4 className="text-lg font-semibold text-purple-300 mb-2">Collecting Information</h4>
-                      <p><strong>Price Range (2025):</strong> {game.collecting.priceRange}</p>
-                      {game.collecting.alternative && (
-                        <p><strong>Alternative:</strong> {game.collecting.alternative}</p>
+                      <p><strong>Price Range (2025):</strong> {game.collecting?.priceRange}</p>
+                      {game.collecting?.alternative && (
+                        <p><strong>Alternative:</strong> {game.collecting?.alternative}</p>
                       )}
                     </div>
                     
