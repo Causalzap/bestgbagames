@@ -68,7 +68,7 @@ export default function HomePage() {
                   <div className="aspect-[3/4] relative">
                     <Image 
                       src={coverPath}
-                      alt={game.coverAlt}
+                      alt={game.coverAlt ?? `${game.title} cover`}
                       fill
                       className="object-cover rounded-t-xl"
                       onError={(e) => {
@@ -84,8 +84,8 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="flex justify-between text-sm text-gray-500 mb-3">
-                      <span>{game.release.year}</span>
-                      <span>{game.release.developers.join(', ')}</span>
+                      <span>{game.release?.year ?? 'Year unknown'}</span>
+                      <span>{game.release?.developers?.join(', ') ?? 'Unknown Developer'}</span>
                     </div>
                     <p className="text-gray-600 mb-4">{game.coreHighlight}</p>
                     <div className="flex space-x-4">
@@ -146,14 +146,14 @@ export default function HomePage() {
                         <div className="relative w-16 h-16 flex-shrink-0">
                           <Image 
                             src={`/images/covers/${game.slug}.jpg`}
-                            alt={game.coverAlt}
+                            alt={game.coverAlt ?? `${game.title} cover`}
                             fill
                             className="object-cover rounded-lg"
                           />
                         </div>
                         <div className="ml-4">
                           <h4 className="font-bold text-gray-900">{game.title}</h4>
-                          <p className="text-sm text-gray-600">{game.release.year}</p>
+                          <p className="text-sm text-gray-600">{game.release?.year ?? 'Year unknown'}</p>
                         </div>
                       </div>
                     );
