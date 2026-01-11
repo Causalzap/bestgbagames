@@ -1,13 +1,13 @@
 // 修改根布局文件 - 统一设置顶部空间
 // src/app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+//import { Inter } from 'next/font/google';
 import './globals.css';
 import RetroHeader from '@/components/layout/RetroHeader';
 import Footer from '@/components/layout/Footer';
 
 
-const inter = Inter({ subsets: ['latin'] });
+//const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'BestGbaGames.com | Ultimate Game Boy Advance Archive',

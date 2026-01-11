@@ -1,13 +1,10 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
+import GameListClient from './GameListClient'; // 引入上面的 Client 组件
 import topGames from '@/data/articles/rpg-top-games.json';
 import categories from '@/data/articles/rpg-categories.json';
-import { getEmbedUrl } from '@/lib/gameService'; // 确保有这个函数
 
-// —— 新增：强类型 —— //
+// 定义类型
 type Game = {
   id: number;
   rank: number;
@@ -23,194 +20,226 @@ type Game = {
   release: { developers: string[] };
   gameDetailUrl?: string;
   whyStillWorthPlaying?: string;
+
+  // 👇 新增这些字段，解决红线报错
+  coreHighlight?: string;
+  historicalSignificance?: string;
+  pros?: string[];
+  cons?: string[];
 };
 
-// 将 JSON 明确断言为 Game[]
-const games: Game[] = topGames as Game[];
+const games = topGames as Game[];
 
-export default function BestGBARpgs() {
-  const [playingGame, setPlayingGame] = useState<string | null>(null);
-  
-  if (!Array.isArray(categories)) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white flex items-center justify-center">
-        <div className="max-w-md p-8 bg-red-900/50 rounded-xl text-center">
-          <h2 className="text-2xl font-bold mb-4">Data Loading Error</h2>
-          <p className="mb-6">
-            Failed to load categories data. Please check the JSON format.
-          </p>
-          <Link 
-            href="/" 
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full"
-          >
-            Return to Home
-          </Link>
-        </div>
-      </div>
-    );
+// ✅ 1. 添加 Metadata (SEO 关键)
+export const metadata: Metadata = {
+  title: 'Best GBA RPG Games of All Time (Ranked List)',
+  description: 'Discover the top rated GBA RPGs including Golden Sun, Fire Emblem, and Pokémon. Play them online or read our in-depth reviews.',
+  alternates: {
+    canonical: 'https://www.bestgbagames.com/rpg-hub'
   }
+};
 
-  // 打开游戏弹窗
-  const openGameModal = (slug: string) => {
-    setPlayingGame(slug);
-  };
-
-  // 关闭游戏弹窗
-  const closeGameModal = () => {
-    setPlayingGame(null);
-  };
-
+export default function RpgHubPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      {/* 游戏弹窗 */}
-      {playingGame && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-800 rounded-xl w-full max-w-2xl overflow-hidden">
-            <div className="bg-purple-700 text-white p-4 flex justify-between items-center">
-              <h3 className="text-lg font-bold">Playing Game</h3>
-              <button
-                onClick={closeGameModal}
-                className="text-white hover:text-gray-200 text-xl"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-6 text-center">
-              
-              <div className="aspect-video w-full bg-black flex items-center justify-center">
-                <iframe
-                  src={getEmbedUrl(playingGame)}
-                  className="w-full h-full"
-                  sandbox="allow-same-origin allow-scripts"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      
       <div className="max-w-7xl mx-auto px-4 pt-20 pb-12">
+        
+        {/* Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             Best GBA RPG Games
           </h1>
           <p className="text-gray-300 text-lg">
-            The definitive ranking of the top role-playing games for the Game Boy Advance
+            The definitive ranking of the top role-playing games for the Game Boy Advance, curated by data and nostalgia.
           </p>
         </div>
         
-        {/* 修改：用 games，并在 map 中标注 (game: Game) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {games.map((game: Game) => (
-            <GameCard 
-              key={game.id} 
-              game={game} 
-              onPlay={() => openGameModal(game.slug)}
-            />
-          ))}
+        {/* ✅ 2. 插入 Client Component (处理列表和弹窗) */}
+        <GameListClient games={games} />
+
+        <div className="mt-24 border-t border-gray-700 pt-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-400">
+            Detailed Review: Top {games.length} GBA RPGs Ranked
+          </h2>
+          
+          <div className="space-y-16 max-w-4xl mx-auto">
+            {games.map((game) => (
+              <article key={game.id} id={`review-${game.slug}`} className="bg-gray-800/50 rounded-2xl p-6 md:p-8 border border-gray-700">
+                {/* 标题栏 */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 border-b border-gray-700 pb-4">
+                  <div>
+                    <span className="text-purple-400 font-bold tracking-wider text-sm uppercase">
+                      #{game.rank} • {game.year} • {game.release?.developers?.join(', ')}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mt-1">
+                      {game.title}
+                    </h3>
+                  </div>
+                  <div className="mt-4 md:mt-0 flex items-center space-x-4">
+                    {/* Metacritic 分数展示 */}
+                    <div className="flex flex-col items-center bg-gray-900 rounded-lg px-4 py-2 border border-gray-600">
+                      <span className="text-2xl font-bold text-green-400">{game.metacritic || 'N/A'}</span>
+                      <span className="text-[10px] text-gray-400 uppercase">Metascore</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 内容区域 */}
+                <div className="prose prose-invert max-w-none">
+                  <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                    {game.description}
+                  </p>
+
+                  <div className="bg-gray-900/50 rounded-xl p-6 border-l-4 border-purple-500 mb-6">
+                    <h4 className="text-lg font-bold text-white mb-2">💡 Core Highlight</h4>
+                    <p className="text-gray-300 italic">
+                      &ldquo;{game.coreHighlight || 'A classic GBA experience.'}&rdquo;
+                    </p>
+                  </div>
+                  
+                  {/* 历史意义 & 推荐理由 (从 JSON 读取) */}
+                  <div className="grid md:grid-cols-2 gap-8 mt-6">
+                    <div>
+                      <h4 className="font-bold text-yellow-200 mb-2">🏆 Historical Impact</h4>
+                      <p className="text-sm text-gray-400">
+                        {game.historicalSignificance || 'One of the defining titles of the Game Boy Advance era.'}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-green-200 mb-2">🎮 Why Play Today?</h4>
+                      <p className="text-sm text-gray-400">
+                        {game.whyStillWorthPlaying || 'Still holds up remarkably well due to its timeless mechanics.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 优缺点 (如果有数据的话) */}
+                  {(game.pros || game.cons) && (
+                    <div className="grid md:grid-cols-2 gap-4 mt-8 pt-6 border-t border-gray-700">
+                       {game.pros && (
+                         <div>
+                           <h5 className="font-bold text-green-400 mb-2">✅ The Good</h5>
+                           <ul className="space-y-1">
+                             {game.pros.map((pro, i) => (
+                               <li key={i} className="text-sm text-gray-300 flex items-start">
+                                 <span className="mr-2">•</span>{pro}
+                               </li>
+                             ))}
+                           </ul>
+                         </div>
+                       )}
+                       {game.cons && (
+                         <div>
+                           <h5 className="font-bold text-red-400 mb-2">❌ The Bad</h5>
+                           <ul className="space-y-1">
+                             {game.cons.map((con, i) => (
+                               <li key={i} className="text-sm text-gray-300 flex items-start">
+                                 <span className="mr-2">•</span>{con}
+                               </li>
+                             ))}
+                           </ul>
+                         </div>
+                       )}
+                    </div>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
+
+        {/* 👇👇👇 新增：热门对比 (Popular Comparisons) 👇👇👇 */}
+        <div className="mt-20 mb-16">
+          <h2 className="text-2xl font-bold text-center mb-8">Popular Comparisons</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/versus/golden-sun-vs-fire-emblem" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              Golden Sun vs Fire Emblem
+            </Link>
+            <Link href="/versus/pokemon-ruby-sapphire-emerald-vs-pokemon-firered-leafgreen" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              Emerald vs FireRed
+            </Link>
+            <Link href="/versus/final-fantasy-tactics-advance-vs-tactics-ogre-the-knight-of-lodis" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              FFTA vs Tactics Ogre
+            </Link>
+            <Link href="/versus/advance-wars-2-vs-fire-emblem" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              Advance Wars 2 vs Fire Emblem
+            </Link>
+          </div>
+        </div>
+        {/* 👆👆👆 新增结束 👆👆👆 */}
     
+        {/* Subgenres Categories */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">
             Explore RPG Subgenres
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {categories.map((category: any, index: number) => (
               <SafeCategoryCard key={index} category={category} />
             ))}
           </div>
         </div>
+
+        {/* 👇👇👇 新增：FAQ (常见问题) 👇👇👇 */}
+        <div className="mb-16 border-t border-gray-700 pt-16">
+          <h2 className="text-2xl font-bold text-center mb-12">
+            Common Questions About GBA RPGs
+          </h2>
+          <div className="space-y-6 max-w-4xl mx-auto">
+            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+              <h3 className="font-bold text-lg text-yellow-400 mb-2">What is the best selling GBA RPG?</h3>
+              <p className="text-gray-300 text-sm">
+                <em>Pokémon Ruby and Sapphire</em> are the best-selling RPGs on the platform, selling over 16 million copies worldwide. However, regarding critical acclaim among hardcore fans, titles like <em>Golden Sun</em> and <em>Fire Emblem</em> are often considered the peak of pixel art RPGs.
+              </p>
+            </div>
+
+            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+              <h3 className="font-bold text-lg text-yellow-400 mb-2">Can I play these games on my phone?</h3>
+              <p className="text-gray-300 text-sm">
+                Yes, GBA emulation is very mature. Modern emulators like <strong>Pizza Boy GBA</strong> (Android) or <strong>Delta</strong> (iOS) run these games perfectly. However, many purists prefer the tactile feel of original hardware or a dedicated handheld device like the Analogue Pocket.
+              </p>
+            </div>
+
+            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+              <h3 className="font-bold text-lg text-yellow-400 mb-2">Which GBA RPG is best for beginners?</h3>
+              <p className="text-gray-300 text-sm">
+                <em>Mario & Luigi: Superstar Saga</em> is fantastic for beginners due to its humor and action-command battle system. <em>Pokémon FireRed</em> is also designed specifically as an entry point into the RPG genre, featuring a &quot;Teachy TV&quot; item to explain mechanics.
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* 👆👆👆 新增结束 👆👆👆 */}
         
-        <div className="bg-gray-800 rounded-xl p-6 mb-12 border border-gray-700">
+        {/* Internal Link to Pokemon Article */}
+        <div className="bg-gray-800 rounded-xl p-8 mb-12 border border-purple-900/50 shadow-lg">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-white">
               Is Pokémon an RPG?
             </h2>
             <p className="text-gray-300 mb-6">
-              Explore one of the most debated questions among retro gaming fans
+              It&apos;s the most famous GBA game series, but does it count as a &quot;real&quot; RPG? We dive deep into the mechanics.
             </p>
-            
             <Link 
               href="/rpg-hub/is-pokemon-an-rpg"
-              className="inline-block bg-purple-700 hover:bg-purple-800 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+              className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105"
             >
-              Read Analysis
+              Read the Analysis
             </Link>
           </div>
         </div>
+
       </div>
     </div>
   );
 }
 
-// 修改：GameCard 的 game 使用强类型 Game
-function GameCard({ game, onPlay }: { 
-  game: Game;
-  onPlay: () => void;
-}) {
-
-  const developers = game.release?.developers?.length
-    ? game.release.developers.join(', ')
-    : 'Unknown';
-
-  return (
-    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all border border-gray-700 min-h-[280px]">
-      <div className="p-4 flex h-full">
-        {/* 游戏封面 */}
-        <div className="w-1/3 flex-shrink-0 mr-4">
-          <div className="bg-gray-700 rounded-lg overflow-hidden aspect-[3/4] border border-gray-600 h-full">
-            <Image 
-              src={`/images/covers/${game.slug}.jpg`}
-              alt={`${game.title} cover art`}
-              width={300}
-              height={400}
-              className="w-full h-full object-cover"
-              // Next/Image 的 onError 类型不直接暴露 <img>，这里保持原写法即可
-              onError={(e) => {
-                (e.currentTarget as unknown as HTMLImageElement).src = '/images/covers/default.jpg';
-              }}
-            />
-          </div>
-        </div>
-        
-        {/* 游戏详情 */}
-        <div className="flex-grow flex flex-col">
-          <div className="mb-2">
-            <h3 className="text-xl font-bold text白 line-clamp-1">
-              {game.title}
-            </h3>
-            <div className="text-sm text-gray-400">
-              {game.year} • {developers}
-            </div>
-          </div>
-          
-          <p className="text-gray-300 text-sm line-clamp-3 flex-grow mb-2">
-            {game.description}
-          </p>
-          
-          <div className="flex flex-wrap gap-2 mt-auto">
-            <Link 
-              href={`/games/${game.slug}`}
-              className="text-purple-400 hover:text-purple-300 font-medium text-sm"
-            >
-              View Details
-            </Link>
-            
-            <button
-              onClick={onPlay}
-              className="bg-purple-700 hover:bg-purple-800 px-3 py-1 rounded text-sm font-medium text-white transition-colors"
-            >
-              Play Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+// 辅助函数：把 "golden-sun" 变成 "Golden Sun"
+const formatSlug = (slug: string) => {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
 function SafeCategoryCard({ category }: { category: any }) {
   const categoryPathMap: Record<string, string> = {
@@ -220,50 +249,44 @@ function SafeCategoryCard({ category }: { category: any }) {
     'Adventure RPGs': '/rpg-hub/adventure',
   };
 
-  const safeCategory = {
-    title: category?.title || 'Unknown Category',
-    icon: category?.icon || '🎮',
-    path: categoryPathMap[category?.title as string] || '#',
-    description: category?.description || 'Description not available',
-    games: Array.isArray(category?.games) ? (category.games as string[]) : [],
-  };
+  const path = categoryPathMap[category?.title] || '#';
 
   return (
-    <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors border-2 border-gray-600 shadow-md">
-      {/* 只保留这一层 Link */}
-      <Link href={safeCategory.path} className="hover:no-underline block">
-        <div className="flex items-center mb-3">
-          <span className="text-2xl mr-2">{safeCategory.icon}</span>
-          <h3 className="text-lg font-bold text-white line-clamp-1">
-            {safeCategory.title}
-          </h3>
+    <div className="bg-gray-800 rounded-lg p-6 h-full border border-gray-700 hover:border-purple-500 transition-all flex flex-col">
+      <Link href={path} className="block group mb-4">
+         <div className="flex items-center mb-3">
+            <span className="text-3xl mr-3">{category?.icon || '🎮'}</span>
+            <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+              {category?.title}
+            </h3>
+         </div>
+         <p className="text-gray-400 text-sm line-clamp-2">{category?.description}</p>
+      </Link>
+
+      {/* 👇 修复这里：把 Popular Games 变成可点击的链接 */}
+      {category?.games && category.games.length > 0 && (
+        <div className="mt-auto pt-4 border-t border-gray-700">
+          <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">
+            Popular Titles
+          </span>
+          <ul className="space-y-1">
+            {category.games.slice(0, 3).map((gameSlug: string, idx: number) => (
+              <li key={idx} className="flex items-center text-sm">
+                <span className="text-purple-500 mr-2">•</span>
+                <Link 
+                  href={`/best-games/${gameSlug}`} // 链接指向详情页
+                  className="text-purple-300 hover:text-white transition-colors hover:underline decoration-purple-500/50"
+                >
+                  {formatSlug(gameSlug)} {/* 格式化显示名字 */}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <p className="text-gray-300 text-sm mb-3 line-clamp-2">
-          {safeCategory.description}
-        </p>
-
-        {safeCategory.games.length > 0 && (
-          <div className="mt-2">
-            <div className="text-gray-400 text-xs mb-1 font-medium">Popular Games:</div>
-            <ul className="space-y-1 text-gray-200 text-sm">
-              {safeCategory.games.slice(0, 3).map((game: string, idx: number) => (
-                <li key={idx} className="flex items-center">
-                  <div className="bg-purple-500 w-1.5 h-1.5 rounded-full mr-2" />
-                  <span className="line-clamp-1">{game}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* 这里不要再用 <Link>，用 div/span 就行 */}
-        <div className="mt-3 flex items-center text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors cursor-pointer">
-          <span>Explore</span>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transition-transform hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </div>
+      )}
+      
+      <Link href={path} className="mt-4 text-sm font-bold text-purple-400 hover:text-purple-300 flex items-center">
+        Explore Category <span className="ml-1">→</span>
       </Link>
     </div>
   );

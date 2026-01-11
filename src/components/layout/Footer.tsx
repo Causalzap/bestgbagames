@@ -63,6 +63,13 @@ export default function Footer() {
                     Best GBA Games
                   </Link>
                 </li>
+                {/* 👇👇👇 新增：蹭热度的链接 👇👇👇 */}
+                <li>
+                  <Link href="/articles/is-pokepath-gba" className="text-yellow-300 font-bold hover:text-white transition flex items-center">
+                    <span className="mr-1">🔥</span> Pokepath GBA Guide
+                  </Link>
+                </li>
+                {/* 👆👆👆 新增结束 👆👆👆 */}
                 <li>
                   <Link href="/hidden-gems" className="text-gray-400 hover:text-yellow-400 transition">
                     Hidden Gems

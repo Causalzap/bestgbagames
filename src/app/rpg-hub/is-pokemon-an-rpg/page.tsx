@@ -1,12 +1,5 @@
-// src/app/rpg-hub/is-pokemon-an-rpg/page.tsx
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-// 动态导入，防止因为大小写/缓存导致变量未定义
-const PokemonRPGClient = dynamic(
-  () => import('./PokemonRPGClient'),
-  { ssr: false }
-);
+import PokemonRPGClient from './PokemonRPGClient'; 
 
 export const metadata: Metadata = {
   title: 'Is Pokémon an RPG? | Pokémon JRPG Mechanics & RPG Analysis',
@@ -20,12 +13,13 @@ export const metadata: Metadata = {
     'Game Boy Advance Pokemon RPG',
     'turn-based RPG'
   ],
-  robots: { index: true, follow: true,
-    // 将 max snippet 放在 googleBot，并使用连字符键名
+  robots: { 
+    index: true, 
+    follow: true,
     googleBot: {
       'max-snippet': 180
     } 
-    },
+  },
   alternates: {
     canonical:
       process.env.NEXT_PUBLIC_SITE_URL
@@ -66,6 +60,6 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  // 仅渲染 Client 组件（交互、JSON-LD 都在里面）
+  // ✅ 这里直接使用组件
   return <PokemonRPGClient />;
 }

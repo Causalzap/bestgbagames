@@ -1,0 +1,91 @@
+name: IndexNow on push
+
+on:
+  push:
+    branches: [ main ]   # 如果你的默认分支是 master，请改为 master
+  workflow_dispatch:      # 允许手动触发任务
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      DOMAIN: https://www.bestgbagames.com
+      # 直接在这里写死密钥，省去配置 Secrets 的步骤
+      INDEXNOW_KEY: "cb5ad8431a4a499d9048348786f972eb"
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+
+      - name: Collect changed files
+        env:
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          # 计算差异，找出变动的文件
+          BASE="${BEFORE:-$(git rev-parse HEAD^)}"
+          git diff --name-only "$BASE" "$SHA" > changed.txt || true
+          
+          # 筛选出网页文件（针对 HTML 或内容目录）
+          grep -E '^(app/|src/app/).*?page\.(t|j)sx|^(pages/|src/pages/).*\.(t|j)sx|^(content|posts)/.*\.(md|mdx)|^public/.*\.html$' changed.txt > urlfiles.txt || true
+          echo "Changed files detected:"
+          cat urlfiles.txt || true
+
+      - name: Build payload
+        run: |
+          python3 - <<'PY'
+          import os, re, json
+          domain = os.environ['DOMAIN'].rstrip('/')
+          key = os.environ['INDEXNOW_KEY']
+
+          try:
+            with open('urlfiles.txt') as f:
+                paths = [l.strip() for l in f if l.strip()]
+          except FileNotFoundError:
+            paths = []
+
+          def to_url(p: str):
+            p = p.replace('\\','/')
+            if p.startswith('public/'):
+              return f"{domain}/" + p[len('public/'):].lstrip('/')
+            if p.startswith(('app/', 'src/app/')):
+              u = re.sub(r'^(src/)?app/','',p)
+              u = re.sub(r'/page\.(t|j)sx$','',u)
+              return f"{domain}/" + u.strip('/')
+            if p.startswith(('pages/', 'src/pages/')):
+              u = re.sub(r'^(src/)?pages/','',p)
+              u = re.sub(r'/index\.(t|j)sx$','/',u)
+              u = re.sub(r'\.(t|j)sx$','',u)
+              return f"{domain}/" + u.strip('/')
+            if p.startswith(('content/','posts/')):
+              u = re.sub(r'^(content/|posts/)', '', p)
+              u = re.sub(r'\.(md|mdx)$','',u)
+              return f"{domain}/" + u.strip('/')
+            return None
+
+          urls = sorted({ u for p in paths for u in [to_url(p)] if u })
+          
+          # 如果没有任何页面变动，至少提交主页确保索引触发
+          if not urls:
+              urls = [domain + "/"]
+
+          payload = {
+            "host": re.sub(r'^https?://','',domain),
+            "key": key,
+            "keyLocation": f"{domain}/{key}.txt",
+            "urlList": urls
+          }
+          with open('payload.json','w') as f:
+              f.write(json.dumps(payload))
+          print(f"Payload created with {len(urls)} URLs")
+          PY
+
+      - name: Submit to IndexNow
+        run: |
+          if [ -s payload.json ]; then
+            echo "Submitting to IndexNow..."
+            curl -sS -X POST 'https://api.indexnow.org/indexnow' \
+              -H 'Content-Type: application/json; charset=utf-8' \
+              --data @payload.json
+          else
+            echo "No URLs to submit."
+          fi

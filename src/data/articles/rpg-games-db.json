@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "golden-sun",
+    "title": "Golden Sun",
+    "specs": { "romSize": "8 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 22, "completionist": 38 }, "difficulty": "Medium", "perspective": "Top-Down / Isometric" },
+    "meta": { "bestEmulatorFeature": "ipatix High Quality Mixer Support", "hasSequel": true }
+  },
+  {
+    "slug": "golden-sun-the-lost-age",
+    "title": "Golden Sun: The Lost Age",
+    "specs": { "romSize": "16 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 32, "completionist": 55 }, "difficulty": "Medium-Hard", "perspective": "Top-Down / Isometric" },
+    "meta": { "bestEmulatorFeature": "Link Cable (Data Transfer)", "hasSequel": true }
+  },
+  {
+    "slug": "fire-emblem",
+    "title": "Fire Emblem",
+    "specs": { "romSize": "16 MB", "saveType": "EEPROM / Flash" },
+    "gameplay": { "timeToBeat": { "main": 26, "completionist": 45 }, "difficulty": "Hard", "perspective": "Top-Down Tactics" },
+    "meta": { "bestEmulatorFeature": "Frame Buffer Matching", "hasSequel": true }
+  },
+  {
+    "slug": "final-fantasy-tactics-advance",
+    "title": "Final Fantasy Tactics Advance",
+    "specs": { "romSize": "16 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 50, "completionist": 100 }, "difficulty": "Medium", "perspective": "Isometric Tactics" },
+    "meta": { "bestEmulatorFeature": "Stable EEPROM Save", "hasSequel": true }
+  },
+  {
+    "slug": "zelda-link-to-the-past-four-swords",
+    "title": "The Legend of Zelda: A Link to the Past & Four Swords",
+    "specs": { "romSize": "8 MB", "saveType": "EEPROM" },
+    "gameplay": { "timeToBeat": { "main": 15, "completionist": 20 }, "difficulty": "Medium", "perspective": "Top-Down Action" },
+    "meta": { "bestEmulatorFeature": "Multiplayer Link Support", "hasSequel": true }
+  },
+  {
+    "slug": "castlevania-aria-of-sorrow",
+    "title": "Castlevania: Aria of Sorrow",
+    "specs": { "romSize": "8 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 10, "completionist": 18 }, "difficulty": "Medium", "perspective": "Side-Scrolling" },
+    "meta": { "bestEmulatorFeature": "No-Intro Dump (Clean)", "hasSequel": true }
+  },
+  {
+    "slug": "final-fantasy-vi-advance",
+    "title": "Final Fantasy VI Advance",
+    "specs": { "romSize": "12 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 35, "completionist": 60 }, "difficulty": "Medium-Hard", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Sound Restoration Patch", "hasSequel": true }
+  },
+  {
+    "slug": "pokemon-firered-leafgreen",
+    "title": "Pokémon FireRed / LeafGreen",
+    "specs": { "romSize": "16 MB", "saveType": "FLASH 128K" },
+    "gameplay": { "timeToBeat": { "main": 30, "completionist": 140 }, "difficulty": "Easy", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Wireless Adapter Emulation", "hasSequel": true }
+  },
+  {
+    "slug": "tales-of-phantasia",
+    "title": "Tales of Phantasia",
+    "specs": { "romSize": "16 MB", "saveType": "SRAM" },
+    "gameplay": { "timeToBeat": { "main": 30, "completionist": 45 }, "difficulty": "Medium", "perspective": "Linear Motion Battle" },
+    "meta": { "bestEmulatorFeature": "No Ghosting Patch", "hasSequel": true }
+  },
+  {
+    "slug": "mother-3",
+    "title": "Mother 3",
+    "specs": { "romSize": "32 MB", "saveType": "EEPROM (64K)" },
+    "gameplay": { "timeToBeat": { "main": 33, "completionist": 45 }, "difficulty": "Medium", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Low Audio Latency (Rhythm Combo)", "hasSequel": false }
+  },
+  {
+    "slug": "breath-of-fire-ii",
+    "title": "Breath of Fire II",
+    "specs": { "romSize": "8 MB", "saveType": "SRAM" },
+    "gameplay": { "timeToBeat": { "main": 30, "completionist": 50 }, "difficulty": "Hard", "perspective": "Isometric RPG" },
+    "meta": { "bestEmulatorFeature": "Color/Sound Restoration Patch", "hasSequel": true }
+  },
+  {
+    "slug": "mario-and-luigi-superstar-saga",
+    "title": "Mario & Luigi: Superstar Saga",
+    "specs": { "romSize": "16 MB", "saveType": "EEPROM 4K" },
+    "gameplay": { "timeToBeat": { "main": 18, "completionist": 28 }, "difficulty": "Easy-Medium", "perspective": "Top-Down Action" },
+    "meta": { "bestEmulatorFeature": "Rumble Pack Support", "hasSequel": true }
+  },
+  {
+    "slug": "golden-sun-dark-dawn",
+    "title": "Golden Sun: Dark Dawn",
+    "specs": { "romSize": "256 MB (DS)", "saveType": "Flash 4Mbit" },
+    "gameplay": { "timeToBeat": { "main": 25, "completionist": 35 }, "difficulty": "Easy", "perspective": "3D Top-Down" },
+    "meta": { "bestEmulatorFeature": "Requires NDS Emulator (DeSmuME)", "hasSequel": false }
+  },
+  {
+    "slug": "lunar-legend",
+    "title": "Lunar Legend",
+    "specs": { "romSize": "8 MB", "saveType": "EEPROM" },
+    "gameplay": { "timeToBeat": { "main": 20, "completionist": 30 }, "difficulty": "Easy", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Standard GBA Emulation", "hasSequel": true }
+  },
+  {
+    "slug": "magical-vacation",
+    "title": "Magical Vacation",
+    "specs": { "romSize": "16 MB", "saveType": "Flash" },
+    "gameplay": { "timeToBeat": { "main": 25, "completionist": 40 }, "difficulty": "Medium", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "English Fan Translation Patch", "hasSequel": true }
+  },
+  {
+    "slug": "breath-of-fire",
+    "title": "Breath of Fire",
+    "specs": { "romSize": "8 MB", "saveType": "SRAM" },
+    "gameplay": { "timeToBeat": { "main": 25, "completionist": 40 }, "difficulty": "Medium", "perspective": "Isometric RPG" },
+    "meta": { "bestEmulatorFeature": "Sound Restoration Patch", "hasSequel": true }
+  },
+  {
+    "slug": "final-fantasy-iv-advance",
+    "title": "Final Fantasy IV Advance",
+    "specs": { "romSize": "8 MB", "saveType": "EEPROM" },
+    "gameplay": { "timeToBeat": { "main": 20, "completionist": 30 }, "difficulty": "Medium", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Battle Lag Fix Patch", "hasSequel": true }
+  },
+  {
+    "slug": "kingdom-hearts-chain-of-memories",
+    "title": "Kingdom Hearts: Chain of Memories",
+    "specs": { "romSize": "32 MB", "saveType": "EEPROM" },
+    "gameplay": { "timeToBeat": { "main": 22, "completionist": 40 }, "difficulty": "Medium", "perspective": "Isometric" },
+    "meta": { "bestEmulatorFeature": "FMV Support", "hasSequel": true }
+  },
+  {
+    "slug": "riviera-the-promised-land",
+    "title": "Riviera: The Promised Land",
+    "specs": { "romSize": "32 MB", "saveType": "SRAM" },
+    "gameplay": { "timeToBeat": { "main": 25, "completionist": 40 }, "difficulty": "Medium", "perspective": "First-Person / Side" },
+    "meta": { "bestEmulatorFeature": "Voice Acting Support", "hasSequel": true }
+  },
+  {
+    "slug": "lufia-the-ruins-of-lore",
+    "title": "Lufia: The Ruins of Lore",
+    "specs": { "romSize": "8 MB", "saveType": "SRAM" },
+    "gameplay": { "timeToBeat": { "main": 25, "completionist": 40 }, "difficulty": "Medium", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Standard GBA Emulation", "hasSequel": false }
+  },
+  {
+    "slug": "pokemon-ruby-sapphire-emerald",
+    "title": "Pokémon Ruby / Sapphire / Emerald",
+    "specs": { "romSize": "16 MB", "saveType": "FLASH 128K" },
+    "gameplay": { "timeToBeat": { "main": 30, "completionist": 200 }, "difficulty": "Medium", "perspective": "Top-Down RPG" },
+    "meta": { "bestEmulatorFeature": "Real-Time Clock (RTC)", "hasSequel": true }
+  },
+  {
+    "slug": "pokemon-mystery-dungeon-red-rescue-team",
+    "title": "Pokémon Mystery Dungeon: Red Rescue Team",
+    "specs": { "romSize": "32 MB", "saveType": "FLASH 128K" },
+    "gameplay": { "timeToBeat": { "main": 20, "completionist": 60 }, "difficulty": "Medium", "perspective": "Roguelike" },
+    "meta": { "bestEmulatorFeature": "Standard GBA Emulation", "hasSequel": true }
+  }
+]

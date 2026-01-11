@@ -267,6 +267,111 @@ export default function PokemonRPGClient() {
           </div>
         </section>
 
+        {/* ================================================================================== */}
+{/* 👇👇👇 新增：SEO 深度内容注入 (Comparison + GBA History + FAQ) 👇👇👇 */}
+{/* ================================================================================== */}
+
+<div className="max-w-4xl mx-auto my-20 space-y-16">
+  
+  {/* SECTION 1: Pokémon vs Traditional JRPGs */}
+  <section className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+    <h2 className="text-3xl font-bold text-yellow-400 mb-6">
+      Pokémon vs. Traditional GBA RPGs: The Difference
+    </h2>
+    <div className="prose prose-invert max-w-none">
+      <p className="text-gray-300 text-lg mb-6">
+        When placing <em>Pokémon Ruby/Sapphire</em> side-by-side with GBA titans like <em>Final Fantasy VI Advance</em> or <em>Golden Sun</em>, the definition of &quot;RPG&quot; gets interesting. While they share the same DNA, Pokémon evolved in a completely different direction.
+      </p>
+      
+      <div className="grid md:grid-cols-2 gap-8 not-prose">
+        <div className="bg-gray-900/80 p-6 rounded-xl border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-white mb-3">🗡️ Traditional JRPGs</h3>
+          <p className="text-sm text-gray-400 mb-2 font-bold uppercase tracking-wider">Examples: Final Fantasy, Golden Sun</p>
+          <ul className="space-y-3 text-gray-300">
+            <li className="flex items-start"><span className="mr-2">🔹</span> <strong>Fixed Party:</strong> Story dictates who joins your team (e.g., Terra, Locke).</li>
+            <li className="flex items-start"><span className="mr-2">🔹</span> <strong>Combat:</strong> Often uses ATB (Active Time Battle) or MP-based magic systems.</li>
+            <li className="flex items-start"><span className="mr-2">🔹</span> <strong>Progression:</strong> Linear storytelling (&quot;Save the world&quot;).</li>
+          </ul>
+        </div>
+
+        <div className="bg-gray-900/80 p-6 rounded-xl border-l-4 border-yellow-500">
+          <h3 className="text-xl font-bold text-white mb-3">🔴 Pokémon (GBA Era)</h3>
+          <p className="text-sm text-gray-400 mb-2 font-bold uppercase tracking-wider">Examples: Emerald, FireRed</p>
+          <ul className="space-y-3 text-gray-300">
+            <li className="flex items-start"><span className="mr-2">🔸</span> <strong>Team Building:</strong> You choose 6 members from 386 possibilities.</li>
+            <li className="flex items-start"><span className="mr-2">🔸</span> <strong>Combat:</strong> Rock-Paper-Scissors complexity (Type Matchups) + STAB mechanics.</li>
+            <li className="flex items-start"><span className="mr-2">🔸</span> <strong>Progression:</strong> &quot;Champion Journey&quot; loop with collection elements.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION 2: How GBA Revolutionized the Mechanics */}
+  <section className="prose prose-invert max-w-none">
+    <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
+      How GBA Revolutionized the Pokémon RPG Formula
+    </h2>
+    <p className="text-xl text-gray-300 leading-relaxed">
+      If you think Pokémon is &quot;simple,&quot; you likely missed the mathematical revolution that happened on the Game Boy Advance. The transition from Game Boy Color (Gen 2) to GBA (Gen 3) was the single biggest mechanical leap in franchise history.
+    </p>
+    
+    <div className="grid md:grid-cols-3 gap-6 my-8 not-prose">
+      <div className="bg-gray-800 p-6 rounded-lg">
+        <h4 className="font-bold text-green-400 text-lg mb-2">1. Abilities & Natures</h4>
+        <p className="text-sm text-gray-400">
+          GBA introduced <strong>Abilities</strong> (passive skills like <em>Intimidate</em>) and <strong>Natures</strong> (+10% / -10% stat modifiers). This added a layer of RPG min-maxing depth that rivals <em>Dungeons & Dragons</em>.
+        </p>
+      </div>
+      <div className="bg-gray-800 p-6 rounded-lg">
+        <h4 className="font-bold text-blue-400 text-lg mb-2">2. Double Battles</h4>
+        <p className="text-sm text-gray-400">
+          <em>Ruby & Sapphire</em> introduced 2v2 combat, forcing players to think about synergy and area-of-effect moves, shifting the meta from &quot;fastest hitter wins&quot; to tactical setups.
+        </p>
+      </div>
+      <div className="bg-gray-800 p-6 rounded-lg">
+        <h4 className="font-bold text-purple-400 text-lg mb-2">3. The Wireless Era</h4>
+        <p className="text-sm text-gray-400">
+          <em>FireRed & LeafGreen</em> bundled the GBA Wireless Adapter, transforming RPGs from a solitary experience into a truly social ecosystem for trading and battling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION 3: FAQ (Schema Friendly) */}
+  <section className="bg-gray-900 rounded-2xl p-8 border border-gray-800">
+    <h2 className="text-2xl font-bold text-white mb-8 text-center">
+      Common Questions: Pokémon as an RPG
+    </h2>
+    <div className="space-y-6">
+      <div className="border-b border-gray-800 pb-6">
+        <h3 className="font-bold text-lg text-yellow-300 mb-2">Is Pokémon considered a JRPG or a Western RPG?</h3>
+        <p className="text-gray-400">
+          Pokémon is definitively a <strong>JRPG (Japanese Role-Playing Game)</strong>. It was created in Japan by Game Freak and features core JRPG staples: turn-based menu combat, random encounters, linear storytelling, and anime-styled aesthetics.
+        </p>
+      </div>
+      
+      <div className="border-b border-gray-800 pb-6">
+        <h3 className="font-bold text-lg text-yellow-300 mb-2">Does Pokémon have a deep story like Final Fantasy?</h3>
+        <p className="text-gray-400">
+          While traditional RPGs focus on &quot;saving the world&quot; with complex political dramas, Pokémon focuses on <strong>personal growth</strong>. The story is the journey of you, the player, growing from a novice to a Champion. However, GBA titles like <em>Pokémon Mystery Dungeon</em> do offer heavy, emotional narratives.
+        </p>
+      </div>
+
+      <div>
+        <h3 className="font-bold text-lg text-yellow-300 mb-2">What is the best Pokémon RPG on GBA for beginners?</h3>
+        <p className="text-gray-400">
+          <strong>Pokémon FireRed and LeafGreen</strong> are the best entry points. As remakes of the original games, they include a &quot;Teachy TV&quot; feature and help menus specifically designed to teach RPG mechanics to new players.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{/* ================================================================================== */}
+{/* 👆👆👆 深度内容注入结束 👆👆👆 */}
+
         {/* 结论部分 */}
         <section className="bg-gradient-to-r from-yellow-600/20 to-yellow-800/30 rounded-xl p-8 mb-16 border-2 border-yellow-600/30" aria-labelledby="verdict">
           <div className="max-w-3xl mx-auto text-center">
