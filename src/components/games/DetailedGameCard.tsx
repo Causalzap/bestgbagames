@@ -113,6 +113,20 @@ export default function HomePage() {
               href="/best-games" 
               className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-all shadow-md"
             >
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
               See All {bestGamesData.games.length} Best Games
             </Link>
           </div>

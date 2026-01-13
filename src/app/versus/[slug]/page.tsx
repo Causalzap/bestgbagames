@@ -62,7 +62,10 @@ function generateSchema(
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": game1.metacritic,
-            "ratingCount": 100
+            "ratingCount": 100,
+            // 👇👇👇 新增这一行：告诉 Google 满分是 100
+            "bestRating": "100",
+            "worstRating": "0"
           }
         },
         {
@@ -74,7 +77,10 @@ function generateSchema(
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": game2.metacritic,
-            "ratingCount": 100
+            "ratingCount": 100,
+            // 👇👇👇 新增这一行：告诉 Google 满分是 100
+            "bestRating": "100",
+            "worstRating": "0"
           }
         },
         {
