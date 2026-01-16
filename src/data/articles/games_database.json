@@ -1,0 +1,1256 @@
+[
+    {
+      "id": "pokemon-ruby",
+      "title": "Pokémon Ruby",
+      "image_url": "/images/covers/pokemon-ruby.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Creature Collector",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 82,
+        "user": 9.1
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 45,
+        "completionist": 160,
+        "speedrun": "2h 15m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Battery for Clock only",
+        "cart_size": 128,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 50,
+        "price_cib": 140,
+        "rarity": 6,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "pokemon-sapphire",
+      "title": "Pokémon Sapphire",
+      "image_url": "/images/covers/pokemon-sapphire.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Creature Collector",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 82,
+        "user": 9.1
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 45,
+        "completionist": 160,
+        "speedrun": "2h 14m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Battery for Clock only",
+        "cart_size": 128,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 50,
+        "price_cib": 140,
+        "rarity": 6,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "pokemon-emerald",
+      "title": "Pokémon Emerald",
+      "image_url": "/images/covers/pokemon-emerald.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Creature Collector",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 76,
+        "user": 8.9
+      },
+      "playtime": {
+        "main": 30,
+        "main_extra": 55,
+        "completionist": 200,
+        "speedrun": "1h 50m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 128,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 50,
+        "price_cib": 150,
+        "rarity": 7,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "pokemon-firered",
+      "title": "Pokémon FireRed",
+      "image_url": "/images/covers/pokemon-firered.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Creature Collector",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 81,
+        "user": 9.2
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 50,
+        "completionist": 180,
+        "speedrun": "2h 05m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "Wireless Adapter",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 55,
+        "price_cib": 160,
+        "rarity": 6,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "pokemon-leafgreen",
+      "title": "Pokémon LeafGreen",
+      "image_url": "/images/covers/pokemon-leafgreen.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Creature Collector",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 81,
+        "user": 9.2
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 50,
+        "completionist": 180,
+        "speedrun": "2h 06m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "Wireless Adapter",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 55,
+        "price_cib": 160,
+        "rarity": 6,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "super-mario-advance-1",
+      "title": "Super Mario Advance (SMB2)",
+      "image_url": "/images/covers/sma1.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Nintendo",
+        "publisher": "Nintendo",
+        "genre": "Platformer",
+        "sub_genre": "2D Action",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 78,
+        "user": 8.5
+      },
+      "playtime": {
+        "main": 5,
+        "main_extra": 8,
+        "completionist": 15,
+        "speedrun": "45m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery (Early prints)",
+        "cart_size": 32,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 20,
+        "price_cib": 50,
+        "rarity": 3,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "super-mario-advance-2",
+      "title": "Super Mario Advance 2: Super Mario World",
+      "image_url": "/images/covers/sma2.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Nintendo",
+        "publisher": "Nintendo",
+        "genre": "Platformer",
+        "sub_genre": "2D Action",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 89,
+        "user": 9.0
+      },
+      "playtime": {
+        "main": 8,
+        "main_extra": 12,
+        "completionist": 25,
+        "speedrun": "1h 02m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 32,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 25,
+        "price_cib": 60,
+        "rarity": 3,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "super-mario-advance-4",
+      "title": "Super Mario Advance 4: SMB3",
+      "image_url": "/images/covers/sma4.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Nintendo",
+        "publisher": "Nintendo",
+        "genre": "Platformer",
+        "sub_genre": "2D Action",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 83,
+        "user": 8.8
+      },
+      "playtime": {
+        "main": 10,
+        "main_extra": 15,
+        "completionist": 30,
+        "speedrun": "1h 10m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 30,
+        "price_cib": 70,
+        "rarity": 4,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "mario-kart-super-circuit",
+      "title": "Mario Kart: Super Circuit",
+      "image_url": "/images/covers/mario-kart.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Intelligent Systems",
+        "publisher": "Nintendo",
+        "genre": "Racing",
+        "sub_genre": "Kart Racer",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 82,
+        "user": 8.6
+      },
+      "playtime": {
+        "main": 8,
+        "main_extra": 15,
+        "completionist": 40,
+        "speedrun": "N/A"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 32,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 25,
+        "price_cib": 60,
+        "rarity": 3,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "mario-luigi-superstar",
+      "title": "Mario & Luigi: Superstar Saga",
+      "image_url": "/images/covers/mario-luigi.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "AlphaDream",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Action RPG",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 90,
+        "user": 9.3
+      },
+      "playtime": {
+        "main": 20,
+        "main_extra": 35,
+        "completionist": 100,
+        "speedrun": "3h 45m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 35,
+        "price_cib": 90,
+        "rarity": 5,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "zelda-minish-cap",
+      "title": "The Legend of Zelda: The Minish Cap",
+      "image_url": "/images/covers/zelda-minish.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Capcom",
+        "publisher": "Nintendo",
+        "genre": "Action-Adventure",
+        "sub_genre": "Top-down",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 90,
+        "user": 9.1
+      },
+      "playtime": {
+        "main": 20,
+        "main_extra": 30,
+        "completionist": 40,
+        "speedrun": "2h 30m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 65,
+        "price_cib": 180,
+        "rarity": 7,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "zelda-link-to-past",
+      "title": "Zelda: A Link to the Past & Four Swords",
+      "image_url": "/images/covers/zelda-alttp.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Nintendo",
+        "publisher": "Nintendo",
+        "genre": "Action-Adventure",
+        "sub_genre": "Top-down",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 95,
+        "user": 9.4
+      },
+      "playtime": {
+        "main": 15,
+        "main_extra": 25,
+        "completionist": 35,
+        "speedrun": "1h 45m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 64,
+        "multiplayer": "Multi-Pak (Four Swords)",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 30,
+        "price_cib": 75,
+        "rarity": 4,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "metroid-fusion",
+      "title": "Metroid Fusion",
+      "image_url": "/images/covers/metroid-fusion.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Nintendo R&D1",
+        "publisher": "Nintendo",
+        "genre": "Action",
+        "sub_genre": "Metroidvania",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 92,
+        "user": 9.2
+      },
+      "playtime": {
+        "main": 10,
+        "main_extra": 15,
+        "completionist": 25,
+        "speedrun": "1h 20m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save (Most prints)",
+        "cart_size": 32,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 55,
+        "price_cib": 160,
+        "rarity": 7,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "metroid-zero-mission",
+      "title": "Metroid: Zero Mission",
+      "image_url": "/images/covers/metroid-zero.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Nintendo R&D1",
+        "publisher": "Nintendo",
+        "genre": "Action",
+        "sub_genre": "Metroidvania",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 89,
+        "user": 9.0
+      },
+      "playtime": {
+        "main": 8,
+        "main_extra": 12,
+        "completionist": 20,
+        "speedrun": "1h 15m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 70,
+        "price_cib": 200,
+        "rarity": 8,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "fire-emblem",
+      "title": "Fire Emblem (The Blazing Blade)",
+      "image_url": "/images/covers/fire-emblem.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Intelligent Systems",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Tactical RPG",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 86,
+        "user": 9.0
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 40,
+        "completionist": 80,
+        "speedrun": "4h 20m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 60,
+        "price_cib": 180,
+        "rarity": 8,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "fire-emblem-sacred-stones",
+      "title": "Fire Emblem: The Sacred Stones",
+      "image_url": "/images/covers/fe-sacred.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Intelligent Systems",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Tactical RPG",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 87,
+        "user": 9.1
+      },
+      "playtime": {
+        "main": 30,
+        "main_extra": 45,
+        "completionist": 90,
+        "speedrun": "5h 10m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 128,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 65,
+        "price_cib": 190,
+        "rarity": 8,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "castlevania-aria",
+      "title": "Castlevania: Aria of Sorrow",
+      "image_url": "/images/covers/aria.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Konami",
+        "publisher": "Konami",
+        "genre": "Action",
+        "sub_genre": "Metroidvania",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 89,
+        "user": 9.3
+      },
+      "playtime": {
+        "main": 8,
+        "main_extra": 12,
+        "completionist": 25,
+        "speedrun": "1h 55m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 64,
+        "multiplayer": "Link Cable Trade",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 85,
+        "price_cib": 220,
+        "rarity": 9,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "castlevania-harmony",
+      "title": "Castlevania: Harmony of Dissonance",
+      "image_url": "/images/covers/harmony.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Konami",
+        "publisher": "Konami",
+        "genre": "Action",
+        "sub_genre": "Metroidvania",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 79,
+        "user": 8.5
+      },
+      "playtime": {
+        "main": 7,
+        "main_extra": 10,
+        "completionist": 20,
+        "speedrun": "1h 40m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 50,
+        "price_cib": 130,
+        "rarity": 7,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "castlevania-circle",
+      "title": "Castlevania: Circle of the Moon",
+      "image_url": "/images/covers/circle.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Konami",
+        "publisher": "Konami",
+        "genre": "Action",
+        "sub_genre": "Metroidvania",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 78,
+        "user": 8.4
+      },
+      "playtime": {
+        "main": 6,
+        "main_extra": 9,
+        "completionist": 18,
+        "speedrun": "1h 30m"
+      },
+      "tech_specs": {
+        "save_type": "SRAM",
+        "save_note": "Battery Required",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 40,
+        "price_cib": 100,
+        "rarity": 6,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "golden-sun",
+      "title": "Golden Sun",
+      "image_url": "/images/covers/golden-sun.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Camelot",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Turn-Based",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": 91,
+        "user": 9.2
+      },
+      "playtime": {
+        "main": 35,
+        "main_extra": 50,
+        "completionist": 120,
+        "speedrun": "5h 30m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save (Later prints)",
+        "cart_size": 64,
+        "multiplayer": "Battle Mode",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pre-rendered"
+      },
+      "market": {
+        "price_loose": 40,
+        "price_cib": 100,
+        "rarity": 5,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "golden-sun-lost-age",
+      "title": "Golden Sun: The Lost Age",
+      "image_url": "/images/covers/golden-sun-2.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Camelot",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Turn-Based",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": 91,
+        "user": 9.3
+      },
+      "playtime": {
+        "main": 40,
+        "main_extra": 60,
+        "completionist": 150,
+        "speedrun": "6h 15m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "Battle Mode",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pre-rendered"
+      },
+      "market": {
+        "price_loose": 45,
+        "price_cib": 110,
+        "rarity": 6,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "advance-wars-1",
+      "title": "Advance Wars",
+      "image_url": "/images/covers/aw1.jpg",
+      "basic_info": {
+        "year": 2001,
+        "developer": "Intelligent Systems",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Turn-Based",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 92,
+        "user": 9.4
+      },
+      "playtime": {
+        "main": 20,
+        "main_extra": 35,
+        "completionist": 70,
+        "speedrun": "3h 50m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 32,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 45,
+        "price_cib": 100,
+        "rarity": 5,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "advance-wars-2",
+      "title": "Advance Wars 2: Black Hole Rising",
+      "image_url": "/images/covers/aw2.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Intelligent Systems",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Turn-Based",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 88,
+        "user": 9.2
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 40,
+        "completionist": 80,
+        "speedrun": "4h 20m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 40,
+        "price_cib": 100,
+        "rarity": 5,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "ff-tactics-advance",
+      "title": "Final Fantasy Tactics Advance",
+      "image_url": "/images/covers/ffta.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Square",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Tactical RPG",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": 87,
+        "user": 8.9
+      },
+      "playtime": {
+        "main": 30,
+        "main_extra": 50,
+        "completionist": 120,
+        "speedrun": "6h 00m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "Link Cable",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 30,
+        "price_cib": 80,
+        "rarity": 4,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "ff-1-2",
+      "title": "Final Fantasy I & II: Dawn of Souls",
+      "image_url": "/images/covers/ff1-2.jpg",
+      "basic_info": {
+        "year": 2004,
+        "developer": "Square",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Turn-Based",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 82,
+        "user": 8.3
+      },
+      "playtime": {
+        "main": 20,
+        "main_extra": 30,
+        "completionist": 50,
+        "speedrun": "4h 10m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 25,
+        "price_cib": 60,
+        "rarity": 3,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "ff-6",
+      "title": "Final Fantasy VI Advance",
+      "image_url": "/images/covers/ff6.jpg",
+      "basic_info": {
+        "year": 2006,
+        "developer": "Square",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Turn-Based",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 92,
+        "user": 9.4
+      },
+      "playtime": {
+        "main": 35,
+        "main_extra": 50,
+        "completionist": 100,
+        "speedrun": "6h 40m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 80,
+        "price_cib": 200,
+        "rarity": 9,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "mother-3",
+      "title": "Mother 3",
+      "image_url": "/images/covers/mother3.jpg",
+      "basic_info": {
+        "year": 2006,
+        "developer": "Brownie Brown",
+        "publisher": "Nintendo",
+        "genre": "RPG",
+        "sub_genre": "Turn-Based",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": null,
+        "user": 9.5
+      },
+      "playtime": {
+        "main": 25,
+        "main_extra": 40,
+        "completionist": 80,
+        "speedrun": "3h 55m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 128,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 200,
+        "price_cib": 600,
+        "rarity": 10,
+        "bootleg_risk": "Low"
+      }
+    },
+    {
+      "id": "tactics-ogre",
+      "title": "Tactics Ogre: The Knight of Lodis",
+      "image_url": "/images/covers/tactics-ogre.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Quest",
+        "publisher": "Nintendo",
+        "genre": "Strategy",
+        "sub_genre": "Tactical RPG",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": 84,
+        "user": 9.0
+      },
+      "playtime": {
+        "main": 35,
+        "main_extra": 55,
+        "completionist": 120,
+        "speedrun": "7h 10m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Link Cable",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 90,
+        "price_cib": 250,
+        "rarity": 9,
+        "bootleg_risk": "Low"
+      }
+    },
+    {
+      "id": "shining-soul-2",
+      "title": "Shining Soul II",
+      "image_url": "/images/covers/shining-soul-2.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Grasshopper",
+        "publisher": "Atlus",
+        "genre": "Action",
+        "sub_genre": "Action RPG",
+        "perspective": "Isometric"
+      },
+      "scores": {
+        "metacritic": 72,
+        "user": 8.2
+      },
+      "playtime": {
+        "main": 12,
+        "main_extra": 20,
+        "completionist": 45,
+        "speedrun": "2h 20m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Multi-Pak (Co-op)",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 60,
+        "price_cib": 150,
+        "rarity": 8,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "mega-man-zero-1",
+      "title": "Mega Man Zero",
+      "image_url": "/images/covers/mmz1.jpg",
+      "basic_info": {
+        "year": 2002,
+        "developer": "Inti Creates",
+        "publisher": "Capcom",
+        "genre": "Action",
+        "sub_genre": "Platformer",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 80,
+        "user": 8.7
+      },
+      "playtime": {
+        "main": 6,
+        "main_extra": 9,
+        "completionist": 15,
+        "speedrun": "55m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 30,
+        "price_cib": 80,
+        "rarity": 4,
+        "bootleg_risk": "High"
+      }
+    },
+    {
+      "id": "warioware-inc",
+      "title": "WarioWare, Inc.: Mega Microgames!",
+      "image_url": "/images/covers/warioware.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Nintendo R&D1",
+        "publisher": "Nintendo",
+        "genre": "Party",
+        "sub_genre": "Mini-games",
+        "perspective": "Varied"
+      },
+      "scores": {
+        "metacritic": 89,
+        "user": 9.1
+      },
+      "playtime": {
+        "main": 4,
+        "main_extra": 6,
+        "completionist": 10,
+        "speedrun": "N/A"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "Single-Pak",
+        "rumble": false,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 45,
+        "price_cib": 100,
+        "rarity": 5,
+        "bootleg_risk": "Medium"
+      }
+    },
+    {
+      "id": "boktai",
+      "title": "Boktai: The Sun's in Your Hand",
+      "image_url": "/images/covers/boktai.jpg",
+      "basic_info": {
+        "year": 2003,
+        "developer": "Konami",
+        "publisher": "Konami",
+        "genre": "Action",
+        "sub_genre": "Stealth",
+        "perspective": "Top-down"
+      },
+      "scores": {
+        "metacritic": 83,
+        "user": 8.8
+      },
+      "playtime": {
+        "main": 10,
+        "main_extra": 15,
+        "completionist": 25,
+        "speedrun": "2h 10m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 16,
+        "multiplayer": "No",
+        "rumble": false,
+        "solar": true,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 80,
+        "price_cib": 250,
+        "rarity": 9,
+        "bootleg_risk": "Low"
+      }
+    },
+    {
+      "id": "drill-dozer",
+      "title": "Drill Dozer",
+      "image_url": "/images/covers/drill-dozer.jpg",
+      "basic_info": {
+        "year": 2006,
+        "developer": "Game Freak",
+        "publisher": "Nintendo",
+        "genre": "Action",
+        "sub_genre": "Platformer",
+        "perspective": "Side-scrolling"
+      },
+      "scores": {
+        "metacritic": 81,
+        "user": 8.6
+      },
+      "playtime": {
+        "main": 8,
+        "main_extra": 12,
+        "completionist": 20,
+        "speedrun": "1h 45m"
+      },
+      "tech_specs": {
+        "save_type": "Flash",
+        "save_note": "Permanent Save",
+        "cart_size": 64,
+        "multiplayer": "No",
+        "rumble": true,
+        "solar": false,
+        "visuals": "Pixel Art"
+      },
+      "market": {
+        "price_loose": 90,
+        "price_cib": 280,
+        "rarity": 8,
+        "bootleg_risk": "Medium"
+      }
+    }
+  ]

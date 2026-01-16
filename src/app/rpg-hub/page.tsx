@@ -155,11 +155,11 @@ export default function RpgHubPage() {
             <Link href="/versus/golden-sun-vs-fire-emblem" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
               Golden Sun vs Fire Emblem
             </Link>
-            <Link href="/versus/pokemon-ruby-sapphire-emerald-vs-pokemon-firered-leafgreen" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
-              Emerald vs FireRed
+            <Link href="/versus/super-mario-advance-2-vs-super-mario-advance-4" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              Super Mario Advance 2 vs Super Mario Advance 4
             </Link>
-            <Link href="/versus/final-fantasy-tactics-advance-vs-tactics-ogre-the-knight-of-lodis" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
-              FFTA vs Tactics Ogre
+            <Link href="/versus/pokemon-leafgreen-vs-pokemon-sapphire" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
+              Pokemon Leafgreen vs Pokemon Sapphire
             </Link>
             <Link href="/versus/advance-wars-2-vs-fire-emblem" className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-full text-sm hover:border-purple-500 transition hover:bg-gray-700 text-gray-300 hover:text-white">
               Advance Wars 2 vs Fire Emblem

@@ -78,6 +78,20 @@ export default function RetroHeader() {
                 </Link>
               </li>
 
+              {/* ✅ 新增的 Versus 导航入口 */}
+              <li>
+                <Link 
+                  href="/versus" 
+                  className={`px-3 py-2 rounded text-sm font-medium ${
+                    isActive('/versus') 
+                      ? 'bg-purple-600 text-white shadow' 
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Versus
+                </Link>
+              </li>
+
               <li>
                 <Link 
                   href="/online-play" 

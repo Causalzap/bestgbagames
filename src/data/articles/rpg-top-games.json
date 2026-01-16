@@ -105,10 +105,9 @@
       "title": "The Legend of Zelda: A Link to the Past & Four Swords",
       "release": {
       "developers": ["Nintendo"]
-    },
+        },
       "year": 2002,
-      "description": "A re-release of the classic Zelda game along with the new Four Swords multiplayer experience.",
-      "slug": "zelda-link-to-the-past-four-swords",
+      "description": "A portable masterpiece combining one of the greatest adventures ever made with a unique multiplayer experience.",      "slug": "zelda-link-to-the-past-four-swords",
       "metacritic": 95,
       "ign": 9.5,
       "genre": "Adventure PRG",

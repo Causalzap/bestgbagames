@@ -1,454 +1,362 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getMergedGames, type FullGame } from '@/lib/gameUtils';
+// src/app/versus/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import gamesDatabase from "@/data/articles/games_database.json";
+import { generateVerdict } from "@/lib/verdictEngine";
+import { GameData } from "../versus-index-client";
+import { getAllVersusSlugs } from "@/lib/versusPairs";
 
-// ==========================================
-// 1. 核心逻辑与数据获取
-// ==========================================
 
+// 强制静态生成 (Static Site Generation) - 对 SEO 最友好
 export async function generateStaticParams() {
-  const games = getMergedGames();
-  const params = [];
-  for (let i = 0; i < games.length; i++) {
-    for (let j = i + 1; j < games.length; j++) {
-      params.push({
-        slug: `${games[i].slug}-vs-${games[j].slug}`,
-      });
-    }
-  }
-  return params;
+  return getAllVersusSlugs(600).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { game1, game2 } = parseSlug(params.slug);
-  if (!game1 || !game2) return {};
+export function generateMetadata({ params }: { params: { slug: string } }) {
+  const games = gamesDatabase as unknown as GameData[];
+  const [id1, id2] = params.slug.split("-vs-");
+  const g1 = games.find(g => g.id === id1);
+  const g2 = games.find(g => g.id === id2);
+  if (!g1 || !g2) return {};
+
+  const v = generateVerdict(g1, g2);
+  const save1 = g1.tech_specs.save_type || "Unknown";
+  const save2 = g2.tech_specs.save_type || "Unknown";
 
   return {
-    title: `${game1.title} vs ${game2.title}: Which Should You Play First?`,
-    description: `Compare ${game1.title} and ${game2.title} side by side. Difficulty, story length, ROM size, best for beginners or veterans, and which GBA RPG is right for you.`,
-    alternates: {
-      canonical: `https://www.bestgbagames.com/versus/${params.slug}`,
-    },
+    title: `${g1.title} vs ${g2.title} — Save Risk, Price & Playtime Verdict`,
+    description: `Compare ${g1.title} and ${g2.title}: save type (${save1} vs ${save2}), market price, and playtime. Collector, Player, and Value verdicts included.`,
+    alternates: { canonical: `https://www.bestgbagames.com/versus/${params.slug}` }
   };
 }
 
-function parseSlug(slug: string) {
-  const games = getMergedGames();
-  for (const g1 of games) {
-    if (slug.startsWith(g1.slug + '-vs-')) {
-      const remaining = slug.replace(g1.slug + '-vs-', '');
-      const g2 = games.find(g => g.slug === remaining);
-      if (g2) return { game1: g1, game2: g2 };
-    }
-  }
-  return { game1: null, game2: null };
-}
-
-function generateSchema(
-    game1: FullGame,
-    game2: FullGame,
-    faqItems: { q: string; a: string }[]
-  ) {
-    return {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "VideoGame",
-          "@id": `https://www.bestgbagames.com/game/${game1.slug}`,
-          "name": game1.title,
-          "gamePlatform": "Game Boy Advance",
-          "datePublished": game1.year,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": game1.metacritic,
-            "ratingCount": 100,
-            // 👇👇👇 新增这一行：告诉 Google 满分是 100
-            "bestRating": "100",
-            "worstRating": "0"
-          }
-        },
-        {
-          "@type": "VideoGame",
-          "@id": `https://www.bestgbagames.com/game/${game2.slug}`,
-          "name": game2.title,
-          "gamePlatform": "Game Boy Advance",
-          "datePublished": game2.year,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": game2.metacritic,
-            "ratingCount": 100,
-            // 👇👇👇 新增这一行：告诉 Google 满分是 100
-            "bestRating": "100",
-            "worstRating": "0"
-          }
-        },
-        {
-          "@type": "Article",
-          "headline": `${game1.title} vs ${game2.title}: Comparison Guide`,
-          "description": `A detailed comparison between ${game1.title} and ${game2.title} for Game Boy Advance.`,
-          "author": {
-            "@type": "Organization",
-            "name": "GBA Archive"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": faqItems.map(item => ({
-            "@type": "Question",
-            "name": item.q,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": item.a.replace(/\*\*/g, '')
-            }
-          }))
-        }
-      ]
-    };
-  }
+export default function ComparisonDetail({ params }: { params: { slug: string } }) {
+  const games = gamesDatabase as unknown as GameData[];
   
+  // 1. 解析 Slug 获取两个游戏
+  // 假设 slug 是 "pokemon-ruby-vs-pokemon-sapphire"
+  const [id1, id2] = params.slug.split("-vs-");
+  const g1 = games.find(g => g.id === id1);
+  const g2 = games.find(g => g.id === id2);
 
-// ==========================================
-// 2. 页面主组件 (VersusPage)
-// ==========================================
+  if (!g1 || !g2) return notFound();
 
-export default function VersusPage({ params }: { params: { slug: string } }) {
-  const { game1, game2 } = parseSlug(params.slug);
-  if (!game1 || !game2) return notFound();
+  // 2. 调用决策引擎生成结论
+  const verdict = generateVerdict(g1, g2);
+  const winner = verdict.winnerId === g1.id ? g1 : (verdict.winnerId === g2.id ? g2 : null);
 
-  // 逻辑推导
-  const winner = game1.metacritic > game2.metacritic ? game1 : game2;
-  const isG1Hard = game1.gameplay?.difficulty?.toLowerCase().includes('hard');
-  const isG2Hard = game2.gameplay?.difficulty?.toLowerCase().includes('hard');
-  const olderGame = game1.year < game2.year ? game1 : game2;
-  const newerGame = game1.year < game2.year ? game2 : game1;
+  const siteUrl = "https://www.bestgbagames.com";
+  const pageUrl = `${siteUrl}/versus/${params.slug}`;
 
-  // FAQ 数据
-  const faqList = [
-    {
-      q: `Which game is better: ${game1.title} or ${game2.title}?`,
-      a: `Critics generally rate **${winner.title}** higher with a Metascore of **${winner.metacritic}**, compared to ${game1 === winner ? game2.metacritic : game1.metacritic} for ${game1 === winner ? game2.title : game1.title}.`
-    },
-    {
-      q: `Which game should I play first?`,
-      a: `**${olderGame.title}** was released in ${olderGame.year}, earlier than ${newerGame.title} (${newerGame.year}). It is generally recommended to play **${olderGame.title}** first to appreciate the graphical and mechanical evolution in the genre.`
-    },
-    {
-        q: `Is ${game1.title} or ${game2.title} better for beginners?`,
-        a: `${isG1Hard ? game2.title : game1.title} is generally more beginner-friendly due to its ${isG1Hard ? game2.gameplay?.difficulty : game1.gameplay?.difficulty} difficulty and smoother learning curve.`
-    },
-    {
-      q: `Which game is harder?`,
-      a: `${isG1Hard ? `**${game1.title}**` : (isG2Hard ? `**${game2.title}**` : "Both games have balanced difficulty")}, making it better suited for veteran players.`
-    }
-  ];
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Versus", "item": `${siteUrl}/versus` },
+      { "@type": "ListItem", "position": 2, "name": `${g1.title} vs ${g2.title}`, "item": pageUrl }
+    ]
+  };
 
-  // 相关推荐数据
-  const games = getMergedGames();
-  const relatedComparisons = games
-    .filter(g => g.id !== game1.id && g.id !== game2.id)
-    .slice(0, 6)
-    .map(g => ({
-      title: `${game1.title} vs ${g.title}`,
-      slug: `${game1.slug}-vs-${g.slug}`
-    }));
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Which one is safer to own long-term: ${g1.title} or ${g2.title}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": verdict.verdicts?.collector?.shortSummary || verdict.shortSummary
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to replace a battery to keep saves?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            (g1.tech_specs.save_type === "SRAM" || g2.tech_specs.save_type === "SRAM")
+              ? "At least one of these games uses battery-backed SRAM. Over time the battery may die and saves can be lost unless replaced."
+              : "Both games use non-volatile save memory (Flash), so you generally don’t need battery replacement to keep saves."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Which one is the better value right now?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": verdict.verdicts?.value?.shortSummary || verdict.marketAdvice
+        }
+      }
+    ]
+  };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white pt-24 pb-12 px-4">
+    <div className="min-h-screen bg-[#05070A] text-slate-200 font-sans pb-20">
+      <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSchema(game1, game2, faqList)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      
+      {/* 顶部导航 */}
+      <nav className="p-4 border-b border-slate-800 text-sm text-slate-500">
+        <Link href="/versus" className="hover:text-purple-400">← Back to Arena</Link>
+      </nav>
 
-      <div className="max-w-5xl mx-auto">
+      <main className="max-w-4xl mx-auto px-4 pt-10">
         
-        {/* Breadcrumbs */}
-        <nav className="text-sm text-gray-400 mb-8">
-          <Link href="/" className="hover:text-purple-400">Home</Link> <span className="mx-2">/</span>
-          <Link href="/versus" className="hover:text-purple-400">Versus Arena</Link> <span className="mx-2">/</span>
-          <span className="text-white">{game1.title} vs {game2.title}</span>
-        </nav>
-
-        {/* H1 Title */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">
-            <span className="text-blue-400">{game1.title}</span> 
-            <span className="text-gray-600 mx-3 text-2xl">vs</span> 
-            <span className="text-red-400">{game2.title}</span>
-          </h1>
+        {/* H1: 针对 "Decision Intent" 优化 */}
+        <h1 className="text-3xl md:text-5xl font-black text-center mb-4 text-white">
+          {g1.title} vs {g2.title}
+        </h1>
+        {/* TL;DR Answer Box (AEO/GEO) */}
+        <div className="mt-4 max-w-3xl mx-auto bg-slate-900/40 border border-slate-800 rounded-xl p-4 text-sm text-slate-300">
+          <strong>TL;DR:</strong>{" "}
+          {verdict.verdicts?.collector?.winnerId !== "tie"
+            ? `For collectors, ${verdict.verdicts.collector.winnerId === g1.id ? g1.title : g2.title} is safer to own long-term. `
+            : "For collectors, it’s a tie. "}
+          {verdict.verdicts?.player?.winnerId !== "tie"
+            ? `For players, start with ${verdict.verdicts.player.winnerId === g1.id ? g1.title : g2.title}. `
+            : "For players, there’s no clear winner. "}
+          {verdict.verdicts?.value?.winnerId !== "tie"
+            ? `For value, ${verdict.verdicts.value.winnerId === g1.id ? g1.title : g2.title} is the smarter buy right now.`
+            : "For value, prices are too close to call."}
         </div>
 
-        {/* ✅ 1. Verdict Box (一句话结论) */}
-        <div className="bg-gradient-to-r from-gray-800 to-gray-900 border-2 border-yellow-600/50 rounded-xl p-6 mb-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 bg-yellow-600 text-xs font-bold px-3 py-1 text-black uppercase">The Verdict</div>
-          <h2 className="text-xl font-bold text-white mb-4 mt-2">⚡ Quick Verdict: Which one to choose?</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex items-start">
-              <span className="text-2xl mr-3">👈</span>
-              <div>
-                <strong className="text-blue-300 block mb-1">Choose {game1.title} if...</strong>
-                <p className="text-sm text-gray-300">
-                  <RichText text={`You prefer a **${game1.gameplay?.difficulty}** challenge and enjoy **${game1.tags[0]}** mechanics. Ideal for ${isG1Hard ? '**veterans**' : '**newcomers**'}.`} />
-                </p>
+        <p className="text-center text-slate-400 mb-12 text-lg">
+          Comparison guide: Specs, Save Battery Risk, and Market Value.
+        </p>
+
+        {/* --- 核心模块 1: The Verdict (决策结论) --- */}
+        {/* 这是用来抢 Featured Snippet 的位置 */}
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-8 mb-10 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-cyan-500"></div>
+          
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="flex-1">
+              <div className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-2">
+                Our Verdict
               </div>
-            </div>
-            <div className="flex items-start">
-              <span className="text-2xl mr-3">👉</span>
-              <div>
-                <strong className="text-red-300 block mb-1">Choose {game2.title} if...</strong>
-                <p className="text-sm text-gray-300">
-                  <RichText text={`You want a **${game2.gameplay?.difficulty}** experience focusing on **${game2.tags[0]}** mechanics. Best for ${isG2Hard ? '**tactical experts**' : '**casual players**'}.`} />
-                </p>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                {verdict.title}: {winner ? winner.title : "It's a Tie"}
+              </h2>
+              <p className="text-slate-300 leading-relaxed text-lg">
+                {verdict.shortSummary}
+              </p>
+              
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                {verdict.badges.map((b, i) => (
+                  <span key={i} className={`px-3 py-1 rounded text-xs font-bold flex items-center gap-1 ${b.color}`}>
+                    {b.icon} {b.text}
+                  </span>
+                ))}
               </div>
+
+              {/* --- Multi-Intent Verdicts (Collector / Player / Value) --- */}
+              <div className="grid md:grid-cols-3 gap-4 mt-6">
+                {(["collector", "player", "value"] as const).map((k) => {
+                  const v = verdict.verdicts?.[k];
+                  if (!v) return null;
+                
+                  const label =
+                    k === "collector" ? "Collector Verdict" :
+                    k === "player" ? "Player Verdict" :
+                    "Value Verdict";
+                
+                  return (
+                    <div
+                      key={k}
+                      className="bg-slate-950/40 border border-slate-800 rounded-xl p-4"
+                    >
+                      <div className="text-xs uppercase text-slate-500 font-bold mb-2">
+                        {label}
+                      </div>
+                      <div className="text-white font-bold">
+                        {v.title}
+
+                        {v.winnerId !== "tie" ? (
+                          <span className="text-slate-400 font-normal"> — {v.winnerId === g1.id ? g1.title : g2.title}</span>
+                        ) : (
+                          <span className="text-slate-400 font-normal"> — Both are viable</span>
+                        )}
+
+
+                      </div>
+                      <p className="text-slate-400 text-sm mt-2">
+                        {v.shortSummary}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
             </div>
+            
+            {/* Winner Image or Action */}
+            {winner && (
+              <div className="shrink-0">
+                <div className="w-32 h-32 bg-slate-950 rounded-lg flex items-center justify-center border border-slate-700">
+                   {/* 这里放 Winner 的图片 */}
+                   <span className="text-xs text-slate-600">Winner Cover</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Covers */}
-        <div className="grid grid-cols-2 gap-4 md:gap-12 mb-12 items-end">
-             <div className="flex flex-col items-center">
-                <div className="w-32 md:w-48 aspect-[3/4] relative rounded-lg overflow-hidden shadow-lg border-2 border-blue-500/30">
-                  <Image src={`/images/covers/${game1.slug}.jpg`} alt={game1.title} fill className="object-cover" />
-                </div>
-                <h3 className="font-bold text-center mt-3 text-blue-300">{game1.title}</h3>
+        {/* --- 核心模块 2: Risk Assessment (风险提示 - 你的护城河) --- */}
+        {verdict.riskAlert && (
+          <div className="bg-red-900/10 border border-red-900/30 rounded-xl p-6 mb-10 flex items-start gap-4">
+            <div className="text-2xl">⚠️</div>
+            <div>
+              <h3 className="text-lg font-bold text-red-400 mb-1">Collector Risk Warning</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {verdict.riskAlert.message}
+                <br/>
+                <span className="opacity-70 mt-2 block">
+                  Buying a game with SRAM means you will eventually need to solder a new battery to keep your save files. Flash memory lasts almost indefinitely.
+                </span>
+              </p>
+
+              <p className="text-sm text-slate-500 mb-4">
+                These two games are often compared due to similar popularity and price,
+                but differences in save hardware significantly affect long-term ownership.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* --- 核心模块 3: Market Insight (投资建议) --- */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+             <h3 className="text-sm font-bold text-slate-500 uppercase mb-4">Market Value Analysis</h3>
+             <p className="text-slate-300 text-sm mb-4 min-h-[40px]">
+               {verdict.marketAdvice}
+             </p>
+             <div className="flex items-end justify-between border-t border-slate-800 pt-4">
+               <div>
+                 <div className="text-xs text-slate-500">{g1.title}</div>
+                 <div className="text-xl font-mono text-emerald-400">${g1.market.price_loose}</div>
+               </div>
+               <div className="text-right">
+                 <div className="text-xs text-slate-500">{g2.title}</div>
+                 <div className="text-xl font-mono text-emerald-400">${g2.market.price_loose}</div>
+               </div>
              </div>
-             <div className="flex flex-col items-center">
-                <div className="w-32 md:w-48 aspect-[3/4] relative rounded-lg overflow-hidden shadow-lg border-2 border-red-500/30">
-                  <Image src={`/images/covers/${game2.slug}.jpg`} alt={game2.title} fill className="object-cover" />
+          </div>
+
+          <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+             <h3 className="text-sm font-bold text-slate-500 uppercase mb-4">Playtime Commitment</h3>
+             <div className="space-y-4">
+                <div>
+                   <div className="flex justify-between text-xs mb-1">
+                      <span>{g1.title}</span>
+                      <span className="text-slate-400">{g1.playtime.main} Hours</span>
+                   </div>
+                   <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-cyan-500" style={{width: `${Math.min(g1.playtime.main, 100)}%`}}></div>
+                   </div>
                 </div>
-                <h3 className="font-bold text-center mt-3 text-red-300">{game2.title}</h3>
+                <div>
+                   <div className="flex justify-between text-xs mb-1">
+                      <span>{g2.title}</span>
+                      <span className="text-slate-400">{g2.playtime.main} Hours</span>
+                   </div>
+                   <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-pink-500" style={{width: `${Math.min(g2.playtime.main, 100)}%`}}></div>
+                   </div>
+                </div>
              </div>
+             <p className="text-xs text-slate-500 mt-4 italic">
+               *Based on main story completion. Completionist runs may take 2-3x longer.
+             </p>
+          </div>
         </div>
 
-        {/* ✅ 2. Technical Comparison Table */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">Technical Specs Showdown</h2>
-          <div className="overflow-x-auto bg-gray-800 rounded-xl border border-gray-700">
-            <table className="w-full text-left text-sm md:text-base">
-              <thead className="bg-gray-900/50 text-gray-400 uppercase text-xs">
+        {/* --- 核心模块 4: The Data Specs (SEO 词汇池) --- */}
+        <div className="border-t border-slate-800 pt-10">
+          <h3 className="text-2xl font-bold text-white mb-6">Technical Specifications</h3>
+          <div className="overflow-hidden rounded-lg border border-slate-800">
+            <table className="w-full text-sm text-left text-slate-400">
+              <thead className="text-xs uppercase bg-slate-900 text-slate-500">
                 <tr>
-                  <th className="px-6 py-4">Feature</th>
-                  <th className="px-6 py-4 text-blue-300">{game1.title}</th>
-                  <th className="px-6 py-4 text-red-300">{game2.title}</th>
+                  <th className="px-6 py-3">Feature</th>
+                  <th className="px-6 py-3 text-cyan-400">{g1.title}</th>
+                  <th className="px-6 py-3 text-pink-400">{g2.title}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-700">
-                <CompareRow label="Release Year" val1={game1.year} val2={game2.year} />
-                <CompareRow label="Metascore" val1={game1.metacritic} val2={game2.metacritic} highlight />
-                <CompareRow label="Main Story" val1={`${game1.gameplay?.timeToBeat?.main}h`} val2={`${game2.gameplay?.timeToBeat?.main}h`} />
-                <CompareRow label="Completionist" val1={`${game1.gameplay?.timeToBeat?.completionist}h`} val2={`${game2.gameplay?.timeToBeat?.completionist}h`} />
-                <CompareRow label="Difficulty" val1={game1.gameplay?.difficulty} val2={game2.gameplay?.difficulty} />
-                <CompareRow label="ROM Size" val1={game1.specs?.romSize} val2={game2.specs?.romSize} isMono />
-                <tr className="bg-gray-700/30">
-                  <td className="px-6 py-4 font-medium text-yellow-400">Best For</td>
-                  <td className="px-6 py-4">{isG1Hard ? 'Veterans' : 'Newcomers'}</td>
-                  <td className="px-6 py-4">{isG2Hard ? 'Veterans' : 'Newcomers'}</td>
+              <tbody className="divide-y divide-slate-800 bg-slate-900/30">
+                <tr>
+                  <td className="px-6 py-4 font-bold">Save Type</td>
+                  <td className="px-6 py-4">
+                     <span className={g1.tech_specs.save_type === "Flash" ? "text-emerald-400 font-bold" : "text-red-400"}>
+                       {g1.tech_specs.save_type}
+                     </span>
+                  </td>
+                  <td className="px-6 py-4">
+                     <span className={g2.tech_specs.save_type === "Flash" ? "text-emerald-400 font-bold" : "text-red-400"}>
+                       {g2.tech_specs.save_type}
+                     </span>
+                  </td>
+                </tr>
+                <tr>
+                   <td className="px-6 py-4 font-bold">Cartridge Size</td>
+                   <td className="px-6 py-4">{g1.tech_specs.cart_size} Mbit</td>
+                   <td className="px-6 py-4">{g2.tech_specs.cart_size} Mbit</td>
+                </tr>
+                <tr>
+                   <td className="px-6 py-4 font-bold">Developer</td>
+                   <td className="px-6 py-4">{g1.basic_info.developer}</td>
+                   <td className="px-6 py-4">{g2.basic_info.developer}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        {/* ✅ 3. 人群推荐 (Recommendation Cards) */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <RecommendationCard game={game1} isHard={isG1Hard} opponentTitle={game2.title} color="blue" />
-          <RecommendationCard game={game2} isHard={isG2Hard} opponentTitle={game1.title} color="red" />
-        </div>
+        {/* Quick FAQ (AEO/GEO) */}
+          <div className="mt-12 border-t border-slate-800 pt-10">
+            <h2 className="text-2xl font-bold text-white mb-6">Quick FAQ</h2>
 
-        {/* ✅ 3.5 Who Should Skip This Game */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-red-500 pl-4">
-            Who Should Skip These Games?
-          </h2>
+            <div className="space-y-4">
+              <div className="bg-slate-900/30 border border-slate-800 rounded-xl p-5">
+                <h3 className="text-slate-200 font-semibold">
+                  Which one is safer to own long-term?
+                </h3>
+                <p className="text-slate-400 mt-2">
+                  {verdict.verdicts?.collector?.shortSummary || verdict.shortSummary}
+                </p>
+              </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h3 className="font-bold text-blue-300 mb-2">
-                Skip {game1.title} if you…
-              </h3>
-              <ul className="list-disc list-inside text-sm text-gray-400 space-y-1">
-                {isG1Hard && <li>Dislike challenging or complex RPG systems</li>}
-                <li>Prefer fast-paced action over turn-based gameplay</li>
-                <li>Are mainly looking for a short, casual experience</li>
-              </ul>
+              <div className="bg-slate-900/30 border border-slate-800 rounded-xl p-5">
+                <h3 className="text-slate-200 font-semibold">
+                  Do I need to replace a battery to keep saves?
+                </h3>
+                <p className="text-slate-400 mt-2">
+                  {g1.tech_specs.save_type === "SRAM" || g2.tech_specs.save_type === "SRAM"
+                    ? "At least one of these games uses battery-backed SRAM. Over time the battery may die and saves can be lost unless replaced."
+                    : "Both games use non-volatile save memory (Flash), so you generally don’t need battery replacement to keep saves."}
+                </p>
+              </div>
+                  
+              <div className="bg-slate-900/30 border border-slate-800 rounded-xl p-5">
+                <h3 className="text-slate-200 font-semibold">
+                  Which one is the better value right now?
+                </h3>
+                <p className="text-slate-400 mt-2">
+                  {verdict.verdicts?.value?.shortSummary || verdict.marketAdvice}
+                </p>
+              </div>
             </div>
-
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h3 className="font-bold text-red-300 mb-2">
-                Skip {game2.title} if you…
-              </h3>
-              <ul className="list-disc list-inside text-sm text-gray-400 space-y-1">
-                {isG2Hard && <li>Are completely new to RPG mechanics</li>}
-                <li>Don’t enjoy longer story-driven games</li>
-                <li>Prefer simpler progression systems</li>
-              </ul>
-            </div>
           </div>
-        </div>
 
 
-        {/* ✅ 4. 智能攻略 (Strategy Tips) */}
-        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">🛡️ Quick Strategy Tips</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <StrategyTip game={game1} />
-            <StrategyTip game={game2} />
-          </div>
-        </div>
-
-        {/* ✅ 5. 模拟器配置 (Emulator Guide) */}
-        <div className="mb-16">
-          <h2 className="text-xl font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">Emulator Setup Guide</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <EmulatorCard game={game1} color="blue" />
-            <EmulatorCard game={game2} color="red" />
-          </div>
-        </div>
-
-        {/* ✅ 6. FAQ */}
-        <div className="mb-16 border-t border-gray-800 pt-12">
-          <h2 className="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
-          <div className="space-y-4">
-             {faqList.map((faq, idx) => (
-               <FAQItem key={idx} q={faq.q} a={faq.a} />
-             ))}
-          </div>
-        </div>
-
-        {/* More Comparisons */}
-        <div className="mt-16 bg-gray-900 border border-gray-800 rounded-xl p-8">
-          <h3 className="text-xl font-bold mb-6 text-gray-300">More Matchups Featuring {game1.title}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {relatedComparisons.map((comp, idx) => (
-              <Link 
-                key={idx} 
-                href={`/versus/${comp.slug}`} 
-                className="text-sm text-blue-400 hover:text-white hover:underline block truncate"
-              >
-                vs {comp.title.split(' vs ')[1]}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-}
-
-// ==========================================
-// 3. 抽象组件库 (不会再漏了!)
-// ==========================================
-
-// 🔥 核心修复：解析 **text** 为 <strong>text</strong>
-function RichText({ text }: { text: string }) {
-  // 简单的正则分割：将 **包裹的内容** 分离出来
-  const parts = text.split(/(\*\*.*?\*\*)/g);
-  return (
-    <span>
-      {parts.map((part, index) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={index} className="text-white font-bold">{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      })}
-    </span>
-  );
-}
-
-function CompareRow({ label, val1, val2, highlight, isMono }: any) {
-  // 简单的比较逻辑，高的绿色
-  let c1 = "text-gray-300";
-  let c2 = "text-gray-300";
-  
-  if (highlight) {
-    const n1 = parseFloat(String(val1));
-    const n2 = parseFloat(String(val2));
-    if (!isNaN(n1) && !isNaN(n2)) {
-      if (n1 > n2) c1 = "text-green-400 font-bold";
-      if (n2 > n1) c2 = "text-green-400 font-bold";
-    }
-  }
-
-  const fontClass = isMono ? "font-mono text-gray-400" : "";
-
-  return (
-    <tr>
-      <td className="px-6 py-4 font-medium text-gray-400">{label}</td>
-      <td className={`px-6 py-4 ${c1} ${fontClass}`}>{val1}</td>
-      <td className={`px-6 py-4 ${c2} ${fontClass}`}>{val2}</td>
-    </tr>
-  );
-}
-
-function RecommendationCard({ game, isHard, opponentTitle, color }: any) {
-  const borderColor = color === 'blue' ? 'border-blue-500' : 'border-red-500';
-  const titleColor = color === 'blue' ? 'text-blue-300' : 'text-red-300';
-
-  const text = isHard 
-    ? `Choose this if you are a **veteran player** looking for a challenge. Its "**${game.gameplay?.difficulty}**" difficulty rating implies complex mechanics that will test your strategy skills more than ${opponentTitle}.`
-    : `Perfect for **newcomers** or those who want to enjoy the story without hitting a wall. With a "**${game.gameplay?.difficulty}**" rating, it offers a smoother curve than ${opponentTitle}.`;
-
-  return (
-    <div className={`bg-gray-800 p-6 rounded-xl border-l-4 ${borderColor}`}>
-      <h3 className={`text-xl font-bold ${titleColor} mb-2`}>Why Play {game.title}?</h3>
-      <p className="text-gray-300 text-sm leading-relaxed mb-4">
-        <RichText text={text} />
-      </p>
-      <div className="flex gap-2 mt-auto">
-        {game.tags.slice(0, 3).map((tag: string) => (
-           <span key={tag} className="text-xs bg-gray-900 px-2 py-1 rounded text-gray-400 capitalize">{tag.replace('-', ' ')}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StrategyTip({ game }: { game: FullGame }) {
-  let tip = "Save often and talk to every NPC.";
-  const genre = game.genre.toLowerCase();
-  
-  if (genre.includes('tactical') || genre.includes('strategy')) {
-    tip = "Focus on **Unit Positioning**. High ground and flanking usually deal bonus damage. Don't rush your leader unit alone.";
-  } else if (genre.includes('turn-based')) {
-    tip = "Master **Elemental Weaknesses**. Check the enemy's type before attacking. Buffs and debuffs are more effective here.";
-  } else if (genre.includes('action')) {
-    tip = "Learn enemy **Attack Patterns**. Since this is an Action RPG, dodging is just as important as your gear stats.";
-  }
-
-  return (
-    <div className="flex gap-4">
-      <div className="min-w-[50px] h-[50px] bg-gray-700 rounded-full flex items-center justify-center text-2xl">💡</div>
-      <div>
-        <h4 className="font-bold text-white mb-1">Tips for {game.title}</h4>
-        <p className="text-sm text-gray-400"><RichText text={tip} /></p>
-      </div>
-    </div>
-  );
-}
-
-function EmulatorCard({ game, color }: { game: FullGame, color: 'blue' | 'red' }) {
-  const borderColor = color === 'blue' ? 'border-blue-500' : 'border-red-500';
-  const textColor = color === 'blue' ? 'text-blue-300' : 'text-red-300';
-  return (
-    <div className={`bg-gray-800 p-4 rounded-lg border-t-2 ${borderColor}`}>
-      <h3 className={`font-bold text-sm mb-2 ${textColor}`}>{game.title} Config</h3>
-      <ul className="space-y-1 text-xs text-gray-400">
-        <li className="flex justify-between"><span>Feature:</span> <span className="text-white">{game.meta?.bestEmulatorFeature?.slice(0, 25)}...</span></li>
-        <li className="flex justify-between"><span>Save:</span> <span className="text-white font-mono">{game.specs?.saveType}</span></li>
-        <li className="flex justify-between"><span>ROM:</span> <span className="text-white font-mono">{game.specs?.romSize}</span></li>
-      </ul>
-    </div>
-  );
-}
-
-function FAQItem({ q, a }: { q: string, a: string }) {
-  return (
-    <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
-      <h3 className="font-bold text-yellow-500 mb-1">{q}</h3>
-      <div className="text-gray-400 text-sm">
-        <RichText text={a} />
-      </div>
+      </main>
     </div>
   );
 }

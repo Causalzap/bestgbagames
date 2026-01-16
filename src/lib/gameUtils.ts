@@ -1,31 +1,34 @@
 import topGames from '@/data/articles/rpg-top-games.json';
 import dbGames from '@/data/articles/rpg-games-db.json';
 
-// 定义合并后的超级游戏类型
 export type FullGame = typeof topGames[0] & typeof dbGames[0];
 
-// 核心函数：合并两个数据库
+let mergedCache: FullGame[] | null = null;
+
 export function getMergedGames(): FullGame[] {
-  return topGames.map((game) => {
-    // 在新数据库里找到对应的游戏
+  if (mergedCache) return mergedCache;
+
+  const merged = topGames.reduce((acc, game) => {
     const techSpecs = dbGames.find((db) => db.slug === game.slug);
     
-    // 如果找不到对应的新数据，就只返回老数据（防止报错）
-    if (!techSpecs) {
-      console.warn(`Missing tech specs for ${game.slug}`);
-      return game as unknown as FullGame;
+    // 只有当两个库都有该 slug，且关键字段 (gameplay, specs) 存在时才允许生成页面
+    if (techSpecs && techSpecs.gameplay && techSpecs.specs) {
+      acc.push({
+        ...game,
+        ...techSpecs,
+      } as FullGame);
+    } else {
+      // 这里的 Warn 会告诉你到底哪个 slug 没对上
+      console.warn(`[Build Warning] skipping Versus for: "${game.slug}" (Reason: Missing in dbGames or incomplete)`);
     }
+    return acc;
+  }, [] as FullGame[]);
 
-    // 合并！
-    return {
-      ...game,
-      ...techSpecs, // 覆盖或添加新字段
-    };
-  });
+  mergedCache = merged;
+  return merged;
 }
 
-// 辅助函数：根据 slug 获取单个游戏
 export function getGameBySlug(slug: string): FullGame | undefined {
   const games = getMergedGames();
-  return games.find((g) => g.slug === slug);
+  return games.find((g) => g.slug.toLowerCase() === slug.toLowerCase());
 }
